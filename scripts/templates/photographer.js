@@ -1,4 +1,6 @@
-function photographerTemplate(data) {
+import photographerPicture from "./photographerPictureTemplate"
+
+export function photographerTemplate(data) {
   const { id, name, portrait, city, country, tagline, price } = data
 
   const picture = `assets/images/portraits/${portrait}`
