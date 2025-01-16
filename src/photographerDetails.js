@@ -1,5 +1,11 @@
-import PhotographerDetailsController from './controllers/PhotographerDetailsController.js';
+import PhotographerDetailsController from "./controllers/PhotographerDetailsController.js"
 
-document.addEventListener('DOMContentLoaded', () => {
-  PhotographerDetailsController.init();
-});
+document.addEventListener("DOMContentLoaded", () => {
+  PhotographerDetailsController.init()
+})
+
+
+
+
+
+

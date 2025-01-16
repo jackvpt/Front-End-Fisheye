@@ -1,7 +1,3 @@
-#contact_modal {
-    display: none;
-}
-
 .photographer-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -54,18 +50,28 @@
     cursor: pointer;
 }
 
+.contact_button:hover {
+    background-color: #DB8876;
+    color: black;
+}
+
 .photographer-header__picture {
     display: flex;
     justify-content: flex-end;
     width: 31%;
 }
 
+
+/* =========================================== */
+/* MEDIA CARD */
+/* =========================================== */
+
 .photographer-medias {
     margin: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    flex-wrap: wrap;    
+    flex-wrap: wrap;
     row-gap: 30px;
 }
 
@@ -93,16 +99,16 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding:10px 0;
+    padding: 10px 0;
 }
 
 .mediaCard .info h2 {
-    font-size: 24px;
+    font-size: 16px;
     color: #901C1C;
 }
 
 .mediaCard .info .info__likes-count {
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 500;
     color: #901C1C;
 }
@@ -113,53 +119,74 @@
     color: #901C1C;
 }
 
-
+/* =========================================== */
+/* CONTACT MODAL */
+/* =========================================== */
+.contact_modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
 
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
+    height: 90%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     padding: 35px;
     margin: auto;
+
 }
+
 
 .modal header {
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 30px;
+}
+
+.modal header h2,
+.modal header h3 {
+    font-size: 48px;
+    font-weight: normal;
 }
 
 .modal header img {
     cursor: pointer;
 }
 
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
-}
-
 form {
     display: flex;
     width: 100%;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: flex-start;
 }
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 24px;
 }
 
-form div {
-    display: flex;
-    flex-direction: column;
+.modal .requiredField {
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+    margin-left: 10px;
+    color: rgb(235, 207, 116);
+}
+
+.formData {
     width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
 }
 
 form input {
@@ -167,4 +194,25 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 24px;
+    padding: 10px;
+}
+
+form textarea {
+    width: 100%;
+    height: 170px;
+    font-size: 24px;
+    padding: 10px;
+    resize: none;
+}
+
+form .input-invalid {
+    border: 2px solid #e54858;
+}
+
+.error-message {
+    font-size: 18px;
+    color: #901C1C;
+    font-weight: 700;
+    margin-bottom: 5px;
 }
