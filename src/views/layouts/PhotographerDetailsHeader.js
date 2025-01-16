@@ -1,13 +1,11 @@
 import PhotographerPicture from "../templates/PhotographerPictureTemplate.js"
 
 const PhotographerDetailsHeader = (photographer) => {
+  const picture = PhotographerPicture(photographer.portrait)
 
-    const picture = PhotographerPicture(photographer.portrait)
+  const container = document.querySelector(".photographer-header")
+  container.innerHTML = `
 
-    const container = document.querySelector(".photograph-profile")
-    container.innerHTML = `
-        <section role="region" aria-labelledby="photographer-header">
-            <div id="photographer-header" class="photographer-header">
             <div class="photographer-header__info">
                 <h1>${photographer.name}</h1>
                 <h2 aria-label="Localisation de ${photographer.name}">
@@ -27,9 +25,7 @@ const PhotographerDetailsHeader = (photographer) => {
             <div class="photographer-header__picture">
                 ${picture}
             </div>
-            </div>
-        </section>
         `
-  }
+}
 
-  export default PhotographerDetailsHeader
+export default PhotographerDetailsHeader

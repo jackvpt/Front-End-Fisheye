@@ -17,7 +17,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width:31%;
+    width: 31%;
 }
 
 .photographer-header__info h1 {
@@ -38,7 +38,7 @@
 .photographer-header__button {
     display: flex;
     justify-content: center;
-    width:31%;
+    width: 31%;
 }
 
 .contact_button {
@@ -57,8 +57,63 @@
 .photographer-header__picture {
     display: flex;
     justify-content: flex-end;
-    width:31%;
+    width: 31%;
 }
+
+.photographer-medias {
+    margin: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;    
+    row-gap: 30px;
+}
+
+.mediaCard {
+    width: 350px;
+    height: 350px;
+
+}
+
+.mediaCard img {
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.mediaCard video {
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.mediaCard .info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:10px 0;
+}
+
+.mediaCard .info h2 {
+    font-size: 24px;
+    color: #901C1C;
+}
+
+.mediaCard .info .info__likes-count {
+    font-size: 24px;
+    font-weight: 500;
+    color: #901C1C;
+}
+
+.mediaCard .info .fa-heart {
+    font-size: 22px;
+
+    color: #901C1C;
+}
+
+
 
 .modal {
     border-radius: 5px;

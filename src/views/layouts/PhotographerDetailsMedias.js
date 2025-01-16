@@ -1,14 +1,11 @@
-const PhotographerDetailsMedias = (photographer) => {
-  const picture = PhotographerPicture(photographer.portrait)
+import PhotographerMedia from "../templates/PhotographerMediaTemplate.js"
 
-  const container = document.querySelector(".photograph-profile")
-  container.innerHTML = `
-        <section role="region" aria-labelledby="photographer-medias">
-            <div id="photographer-medias" class="photographer-medias">
-            
-            </div>
-        </section>
-        `
+const PhotographerDetailsMedias = (photographer, medias) => {
+  const container = document.querySelector(".photographer-medias")
+  medias.map((media) => {
+    const mediaElement = PhotographerMedia(photographer, media)
+    container.innerHTML += mediaElement
+  })
 }
 
 export default PhotographerDetailsMedias

@@ -1,10 +1,12 @@
 import PhotographerDetailsHeader from "./layouts/PhotographerDetailsHeader.js"
+import PhotographerDetailsMedias from "./layouts/PhotographerDetailsMedias.js"
 
 export default class PhotographerDetailsView {
-  static render(photographer, medias) {
+  static renderPhotographerDetails(photographer, medias) {
     // Header
     PhotographerDetailsHeader(photographer)
 
     // Medias
+    PhotographerDetailsMedias(photographer, medias)
   }
 }
