@@ -78,7 +78,6 @@
 .mediaCard {
     width: 350px;
     height: 350px;
-
 }
 
 .mediaCard img {
@@ -86,6 +85,7 @@
     height: 300px;
     object-fit: cover;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .mediaCard video {
@@ -93,12 +93,14 @@
     height: 300px;
     object-fit: cover;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .mediaCard .info {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     padding: 10px 0;
 }
 
@@ -107,6 +109,11 @@
     color: #901C1C;
 }
 
+.mediaCard .info .info__likes{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 .mediaCard .info .info__likes-count {
     font-size: 16px;
     font-weight: 500;
@@ -114,15 +121,44 @@
 }
 
 .mediaCard .info .fa-heart {
+    margin-left:10px;
     font-size: 22px;
-
     color: #901C1C;
+    cursor: pointer;
+}
+
+/* =========================================== */
+/* INFOS (Nb likes & price) */
+/* =========================================== */
+.photographer-infos{
+    position:fixed;
+    bottom: 0%;
+    right:30px;
+    padding:10px 20px;
+    background-color: #DB8876;
+    color:black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:40px;
+
+    border-radius: 5px 5px 0 0 ;
+}
+
+.photographer-infos div{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.photographer-infos i{
+    margin-left: 10px;
 }
 
 /* =========================================== */
 /* CONTACT MODAL */
 /* =========================================== */
-.contact_modal {
+
+.container__contact_modal {
     display: none;
     position: fixed;
     top: 0;
@@ -135,7 +171,7 @@
     z-index: 1000;
 }
 
-.modal {
+.contact-modal {
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
@@ -148,20 +184,23 @@
 }
 
 
-.modal header {
+.contact-modal header {
     justify-content: space-between;
     width: 100%;
     margin-bottom: 30px;
 }
 
-.modal header h2,
-.modal header h3 {
+.contact-modal header h2,
+h3 {
     font-size: 48px;
     font-weight: normal;
 }
 
-.modal header img {
+
+.contact-modal .close-modal {
     cursor: pointer;
+    background-color: transparent;
+    border: none;
 }
 
 form {
@@ -177,12 +216,12 @@ form label {
     font-size: 24px;
 }
 
-.modal .requiredField {
+.contact-modal .requiredField {
     font-size: 16px;
     font-weight: 600;
     font-style: italic;
     margin-left: 10px;
-    color: rgb(235, 207, 116);
+
 }
 
 .formData {
@@ -212,7 +251,94 @@ form .input-invalid {
 
 .error-message {
     font-size: 18px;
-    color: #901C1C;
+    color: #6A1515;
     font-weight: 700;
     margin-bottom: 5px;
+}
+
+/* =========================================== */
+/* LIGHTBOX MODAL */
+/* =========================================== */
+
+.container__lightbox_modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 1);
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    z-index: 1000;
+}
+
+.lightbox-modal {
+    border-radius: 5px;
+    width: 90%;
+    height: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 35px;
+    margin: auto;
+
+}
+
+.lightbox-modal .close-modal,
+.previous,
+.next {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.container__lightbox-media {
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container__lightbox-media img, video {
+    height: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.lightbox-leftButtons {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 5%;
+    height: 100%;
+    justify-content: center;
+}
+
+.lightbox-rightButtons {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    width: 5%;
+    position: relative;
+}
+
+.lightbox-rightButtons .close-modal {
+    margin-bottom: auto;
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.lightbox-leftButtons button {
+    margin: auto 0;
+}
+
+.lightbox-caption_text {
+    font-size: 24px;
+    color: #901C1C;
+    margin-top: 10px;
 }

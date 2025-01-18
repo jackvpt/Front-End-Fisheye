@@ -1,128 +1,248 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="src/styles/main.css" rel="stylesheet" type="text/css" />
-    <link href="src/styles/photographer.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/5397a1a858.js"
-      crossorigin="anonymous"
-    ></script>
-    <title>Fisheye - photographe</title>
-  </head>
-  <body>
-    <header>
-      <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" />
-      </a>
-    </header>
-    <main class="photographer-profile">
-      <section role="region" aria-labelledby="photographer-header">
-        <div id="photographer-header" class="photographer-header"></div>
+<html lang="fr">
+  <html>
+    <head>
+      <link href="src/styles/main.css" rel="stylesheet" type="text/css" />
+      <link
+        href="src/styles/photographer.css"
+        rel="stylesheet"
+        type="text/css"
+      />
+      <meta charset="utf-8" />
+      <link rel="icon" type="image/png" href="assets/favicon.png" />
+      <link
+        href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+        rel="stylesheet"
+      />
+      <script
+        src="https://kit.fontawesome.com/5397a1a858.js"
+        crossorigin="anonymous"
+      ></script>
+      <title>Fisheye - photographe</title>
+    </head>
+    <body>
+      <header>
+        <a href="index.html">
+          <img src="assets/images/logo.png" class="logo" alt="Logo Fisheye" />
+        </a>
+      </header>
+      <main id="photographer-profile" class="photographer-profile">
+        <!-- Header -->
+        <section role="region" aria-labelledby="photographer-header">
+          <div id="photographer-header" class="photographer-header"></div>
+        </section>
+
+        <!-- Medias -->
+        <section role="region" aria-labelledby="photographer-medias">
+          <div id="photographer-medias" class="photographer-medias"></div>
+        </section>
+
+        <!-- Infos (nb likes & price)-->
+        <section role="region" aria-labelledby="photographer-infos">
+          <div id="photographer-infos" class="photographer-infos">
+            <div>
+              <span
+                id="photographer-infos__likes"
+                class="photographer-infos__likes"
+              >
+              </span
+              ><i class="fas fa-heart"></i>
+            </div>
+            <div
+              id="photographer-infos__price"
+              class="photographer-infos__price"
+            >
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- ======================= -->
+      <!-- CONTACT MODAL -->
+      <!-- ======================= -->
+      <section
+        id="container__contact_modal"
+        class="container__contact_modal"
+        role="dialog"
+        aria-hidden="true"
+      >
+        <div class="contact-modal">
+          <header>
+            <div>
+              <h2 id="form-title">Contactez-moi</h2>
+              <h3 id="modal-photographerName">Name</h3>
+            </div>
+            <button
+              class="close-modal"
+              aria-label="Fermer la fenêtre de contact"
+              onclick="closeContactModal()"
+            >
+              <img src="assets/icons/close.svg" alt="Fermer" />
+            </button>
+          </header>
+          <form
+            name="contact_form"
+            onsubmit="submitContactForm(event)"
+            novalidate
+            aria-labelledby="form-title"
+          >
+            <!-- First name -->
+            <div class="formData">
+              <label for="firstName"
+                >Prénom<span class="requiredField"
+                  >(Champ obligatoire)</span
+                ></label
+              >
+              <input
+                class="text-control"
+                type="text"
+                id="firstName"
+                name="firstName"
+                minlength="2"
+                required
+                aria-required="true"
+                aria-describedby="error-firstName"
+                onblur="checkFirstName()"
+              /><br />
+              <div
+                class="error-message"
+                id="error-firstName"
+                aria-live="polite"
+              ></div>
+            </div>
+
+            <!-- Last name -->
+            <div class="formData">
+              <label for="lastName"
+                >Nom<span class="requiredField"
+                  >(Champ obligatoire)</span
+                ></label
+              >
+              <input
+                class="text-control"
+                type="text"
+                id="lastName"
+                name="lastName"
+                minlength="2"
+                required
+                aria-required="true"
+                aria-describedby="error-lastName"
+                onblur="checkLastName();"
+              /><br />
+              <div
+                class="error-message"
+                id="error-lastName"
+                aria-live="polite"
+              ></div>
+            </div>
+
+            <!-- Email -->
+            <div class="formData">
+              <label for="email"
+                >Email<span class="requiredField"
+                  >(Champ obligatoire)</span
+                ></label
+              >
+
+              <input
+                class="text-control"
+                type="email"
+                id="email"
+                name="email"
+                required
+                aria-required="true"
+                aria-describedby="error-email"
+                onblur="checkEmail();"
+              /><br />
+              <div
+                class="error-message"
+                id="error-email"
+                aria-live="polite"
+              ></div>
+            </div>
+
+            <!-- Message -->
+            <div class="formData">
+              <label for="message"
+                >Message<span class="requiredField"
+                  >(Champ obligatoire)</span
+                ></label
+              >
+              <textarea
+                class="text-control"
+                id="message"
+                name="message"
+                rows="5"
+                minlength="10"
+                required
+                aria-required="true"
+                aria-describedby="error-message"
+                onblur="checkMessage()"
+              ></textarea
+              ><br />
+              <div
+                class="error-message"
+                id="error-message"
+                aria-live="polite"
+              ></div>
+            </div>
+            <input
+              class="contact_button"
+              type="submit"
+              value="Envoyer"
+              aria-label="Envoyer le formulaire de contact"
+            />
+          </form>
+        </div>
       </section>
-      <section role="region" aria-labelledby="photographer-medias">
-        <div id="photographer-medias" class="photographer-medias"></div>
+
+      <!-- ======================= -->
+      <!-- LIGHTBOX MODAL -->
+      <!-- ======================= -->
+      <section
+        id="container__lightbox_modal"
+        class="container__lightbox_modal"
+        role="dialog"
+        aria-hidden="true"
+      >
+        <div id="lightbox-modal" class="lightbox-modal">
+          <div class="lightbox-leftButtons">
+            <button
+              class="previous"
+              aria-label="Image précédente"
+              onclick="previousMedia()"
+            >
+              <img src="../src/assets/icons/previous.svg" alt="Précédent" />
+            </button>
+          </div>
+          <div
+            id="container__lightbox-media"
+            class="container__lightbox-media"
+          ></div>
+          <div class="lightbox-rightButtons">
+            <button
+              class="close-modal"
+              aria-label="Fermer la fenêtre de contact"
+              onclick="closeLightboxModal()"
+            >
+              <img src="assets/icons/close_lightbox.svg" alt="Fermer" />
+            </button>
+
+            <button
+              class="next"
+              aria-label="Image suivante"
+              onclick="nextMedia()"
+            >
+              <img src="../src/assets/icons/next.svg" alt="Suivant" />
+            </button>
+          </div>
+        </div>
       </section>
-    </main>
 
-    <!-- ======================= -->
-    <!-- CONTACT MODAL -->
-    <!-- ======================= -->
-    <div id="contact_modal" class="contact_modal">
-      <div class="modal">
-        <header>
-          <div>
-            <h2>Contactez-moi</h2>
-            <h3 id="modal-photographerName"></h3>
-          </div>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-        <form name="contact_form" onsubmit="submitContactForm(event)" novalidate>
-          <!-- First name -->
-          <div class="formData">
-            <label for="firstName"
-              >Prénom<span class="requiredField"
-                >(Champ obligatoire)</span
-              ></label
-            >
-            <input
-              class="text-control"
-              type="text"
-              id="firstName"
-              name="firstName"
-              minlength="2"
-              required
-              onblur="checkFirstName()"
-            /><br />
-            <div class="error-message" id="error-firstName"></div>
-          </div>
-
-          <!-- Last name -->
-          <div class="formData">
-            <label for="lastName"
-              >Nom<span class="requiredField">(Champ obligatoire)</span></label
-            >
-            <input
-              class="text-control"
-              type="text"
-              id="lastName"
-              name="lastName"
-              minlength="2"
-              required
-              onblur="checkLastName();"
-            /><br />
-            <div class="error-message" id="error-lastName"></div>
-          </div>
-
-          <!-- Email -->
-          <div class="formData">
-            <label for="email"
-              >Email<span class="requiredField"
-                >(Champ obligatoire)</span
-              ></label
-            >
-
-            <input
-              class="text-control"
-              type="email"
-              id="email"
-              name="email"
-              required
-              onblur="checkEmail();"
-            /><br />
-            <div class="error-message" id="error-email"></div>
-          </div>
-
-          <!-- Message -->
-          <div class="formData">
-            <label for="message"
-              >Message<span class="requiredField"
-                >(Champ obligatoire)</span
-              ></label
-            >
-            <textarea
-              class="text-control"
-              id="message"
-              name="message"
-              rows="5"
-              minlength="10"
-              required
-              onblur="checkMessage()"
-            ></textarea
-            ><br />
-            <div class="error-message" id="error-message"></div>
-          </div>
-          <input class="contact_button" type="submit" value="Envoyer" />
-        </form>
-      </div>
-    </div>
-
-    <script type="module" src="src/photographerDetails.js"></script>
-    <script src="src/utils/contactForm.js"></script>
-  </body>
+      <script type="module" src="src/photographerDetails.js"></script>
+      <script src="src/utils/contactForm.js"></script>
+      <script src="src/utils/lightBox.js"></script>
+      <script src="src/utils/likesCount.js"></script>
+    </body>
+  </html>
 </html>

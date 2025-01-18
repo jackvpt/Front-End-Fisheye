@@ -4,8 +4,3 @@ document.addEventListener("DOMContentLoaded", () => {
   PhotographerDetailsController.init()
 })
 
-
-
-
-
-

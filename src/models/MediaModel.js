@@ -1,58 +1,68 @@
 import getData from "../utils/fetchData.js"
 
-// Modèle de base
+/** Base model */
 class MediaModel {
-  constructor(data) {
+  constructor(data, directory) {
     this.id = data.id
     this.photographerId = data.photographerId
     this.title = data.title
     this.likes = data.likes
     this.date = data.date
     this.price = data.price
+    this.directory=directory
+    this.liked=false;
+  }
+
+  addLike(){
+    if (!this.liked){
+      this.likes+=1;
+      this.liked=true;
+    }
   }
 }
 
-// Modèle pour les images
+/** Images model */
 class ImageModel extends MediaModel {
-  constructor(data) {
-    super(data)
-    this.image = data.image // Spécifique aux images
+  constructor(data, directory) {
+    super(data, directory)
+    this.image = data.image
   }
 }
 
-// Modèle pour les vidéos
+/** Video model */
 class VideoModel extends MediaModel {
-  constructor(data) {
-    super(data)
-    this.video = data.video // Spécifique aux vidéos
+  constructor(data, directory) {
+    super(data, directory)
+    this.video = data.video
   }
 }
 
-// Factory pour créer le bon type de média
+/** Factory to create appropriate media type */
 class MediaFactory {
-  static createMedia(data) {
+  static createMedia(data, directory) {
     if (data.image) {
-      return new ImageModel(data)
+      return new ImageModel(data, directory)
     } else if (data.video) {
-      return new VideoModel(data)
+      return new VideoModel(data, directory)
     } else {
       throw new Error("Type de média non pris en charge")
     }
   }
 }
 
-// Classe pour gérer les médias
 export default class MediaModelManager {
   /**
-   * Récupère tous les médias
-   * @returns {Promise<Array>} Liste des médias
+   * Retrieve all medias
+   * @returns {Promise<Array>} List of Media
    */
-  static async fetchMediasByPhotographerId(id) {
+  static async fetchMediasByPhotographerId(id, directory) {
     const data = await getData("./src/data/photographers.json")
+    const photographer = data.photographers.find(
+      (photographer) => photographer.id === parseInt(id)
+    )
     const medias = data.media
       .filter((media) => media.photographerId === parseInt(id))
-      .map((media) => MediaFactory.createMedia(media))
-
+      .map((media) => MediaFactory.createMedia(media, directory))
     return medias
   }
 }

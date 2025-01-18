@@ -1,5 +1,11 @@
-const PhotographerMedia = (photographer, media) => {
-  /** Set directory as photographer's name replacing spaces by _ */
+/**
+ * Create the media content (image or video)
+ * @param {PhotographerModel} photographer
+ * @param {MediaModel} media
+ * @returns string
+ */
+const PhotographerMediaContent = (photographer, media) => {
+  /** Set directory as photographer's name, replacing spaces by _ */
   const directory = photographer.name.replace(/\s+/g, "_")
   const path = `./src/assets/images/sample_photos/${directory}/${
     media.image || media.video
@@ -10,7 +16,7 @@ const PhotographerMedia = (photographer, media) => {
   if (media.image) {
     mediaSource = `<img 
       src="${path}"
-      alt="${media.alt || "Image de " + photographer.name}"
+      alt=""
       role="img"
       />`
   } else if (media.video) {
@@ -21,21 +27,26 @@ const PhotographerMedia = (photographer, media) => {
       Votre navigateur ne supporte pas ce type de vidéo.
     </video>`
   } else {
-    console.warn("Le média fournit n'est pas valide: ", media)
+    console.warn("Le média n'est pas valide: ", media)
   }
 
+  return mediaSource
+}
+
+/**
+ * Create the media caption
+ * @param {MediaModel} media
+ * @returns string
+ */
+const PhotographerMediaCaption = (media) => {
   return `
-  <article class="mediaCard" role="group" aria-labelledby="media-title-${media.id}">
-    ${mediaSource}
     <div class="info">
       <h2 id="media-title-${media.id}">${media.title}</h2>
       <div class="info__likes">
         <span class="info__likes-count">${media.likes}</span>
-        <i class="fas fa-heart" role="button" aria-label="J'aime"></i>
+        <i class="fas fa-heart" role="button" aria-label="J'aime ${media.title}"></i>
       </div>
-    </div>
-  </article>
-  `
+    </div>`
 }
 
-export default PhotographerMedia
+export { PhotographerMediaContent, PhotographerMediaCaption }

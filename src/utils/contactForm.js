@@ -1,11 +1,14 @@
 /**
  * GET DOM ELEMENTS
  */
-const modal = document.getElementById("contact_modal")
+const mainWrapper = document.getElementById("photographer-profile")
+const modal = document.getElementById("container__contact_modal")
 const firstName = document.getElementById("firstName")
 const lastName = document.getElementById("lastName")
 const email = document.getElementById("email")
 const message = document.getElementById("message")
+
+const triggerButton = document.querySelector(".contact_button")
 
 const errorFirstName = document.getElementById("error-firstName")
 const errorLastName = document.getElementById("error-lastName")
@@ -15,8 +18,14 @@ const errorMessage = document.getElementById("error-message")
 /**
  * CLOSE MODAL
  */
-function closeModal() {
+function closeContactModal() {
+  /** Set ARIA properties */
+  mainWrapper.setAttribute("aria-hidden", "false")
+  modal.setAttribute("aria-hidden", "true")
   modal.style.display = "none"
+
+  /** Set focus on the trigger button */
+  triggerButton.focus()
 }
 
 /**
@@ -97,7 +106,7 @@ function submitContactForm(event) {
     console.log("E-mail :>> ", email.value)
     console.log("Message :>> ", message.value)
 
-    closeModal()
+    closeContactModal()
     document.forms["contact_form"].reset() // Reset all fields
   }
 }

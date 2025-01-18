@@ -9,6 +9,9 @@ export default class PhotographerModel {
     this.tagline = data.tagline
     this.price = data.price
     this.portrait = data.portrait
+
+    /** Set directory as photographer's name, replacing spaces by _ */
+    this.directory = data.name.replace(/\s+/g, "_")
   }
 
   /**
@@ -28,13 +31,13 @@ export default class PhotographerModel {
    * @returns Photographer based on ID
    */
   static async fetchPhotographerById(id) {
-    const data = await getData("./src/data/photographers.json")
-    const photographer = data.photographers.find(
+    const photographers =await this.fetchPhotographers()
+    const photographerSelected = photographers.find(
       (photographer) => photographer.id === parseInt(id)
     )
-    if (!photographer) {
+    if (!photographerSelected) {
       throw new Error(`Photographer with ID ${id} not found.`)
     }
-    return new PhotographerModel(photographer)
+    return photographerSelected
   }
 }

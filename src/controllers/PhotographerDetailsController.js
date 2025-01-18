@@ -13,8 +13,12 @@ export default class PhotographerDetailsController {
     // }
 
     try {
+      /** Fetch data */
       const photographer = await PhotographerModel.fetchPhotographerById(id)
-      const medias = await MediaModelManager.fetchMediasByPhotographerId(id)
+      const directory = photographer.directory
+      const medias = await MediaModelManager.fetchMediasByPhotographerId(id, directory)
+
+      // Render view
       PhotographerDetailsView.renderPhotographerDetails(photographer, medias)
     } catch (error) {
       console.error(error)

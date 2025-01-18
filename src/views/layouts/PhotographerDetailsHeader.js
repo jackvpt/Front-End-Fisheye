@@ -1,10 +1,23 @@
 import PhotographerPicture from "../templates/PhotographerPictureTemplate.js"
 
+/**
+ * GET DOM ELEMENTS
+ */
+const mainWrapper = document.getElementById("photographer-profile")
+const modalName = document.getElementById("modal-photographerName")
+const contactModal = document.getElementById("container__contact_modal")
+
 function openContactForm(photographerName) {
-  const modalName = document.getElementById("modal-photographerName")
+  /** Set ARIA properties */
+  mainWrapper.setAttribute("aria-hidden", "true")
+  contactModal.setAttribute("aria-hidden", "false")
+  
   modalName.textContent = photographerName
-  const contactModal = document.getElementById("contact_modal")
   contactModal.style.display = "flex"
+
+  /** Set focus on the first input */
+  const firstInput = document.getElementById("firstName")
+  firstInput.focus()
 }
 
 const PhotographerDetailsHeader = (photographer) => {
@@ -35,7 +48,9 @@ const PhotographerDetailsHeader = (photographer) => {
 `
 
   const contactButton = container.querySelector(".contact_button")
-  contactButton.addEventListener("click", openContactForm(photographer.name))
+  contactButton.addEventListener("click", () =>
+    openContactForm(photographer.name)
+  )
 }
 
 export default PhotographerDetailsHeader
