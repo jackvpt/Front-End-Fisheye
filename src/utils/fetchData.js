@@ -1,5 +1,6 @@
 export default async function getData(url) {
   try {
+    // const response = await fetch(url)
     const response = await fetch(url)
 
     if (!response.ok) {

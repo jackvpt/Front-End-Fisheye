@@ -7,7 +7,7 @@
 const PhotographerMediaContent = (photographer, media) => {
   /** Set directory as photographer's name, replacing spaces by _ */
   const directory = photographer.name.replace(/\s+/g, "_")
-  const path = `./src/assets/images/sample_photos/${directory}/${
+  const path = `../../src/assets/images/sample_photos/${directory}/${
     media.image || media.video
   }`
 

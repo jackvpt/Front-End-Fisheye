@@ -56,7 +56,7 @@ export default class MediaModelManager {
    * @returns {Promise<Array>} List of Media
    */
   static async fetchMediasByPhotographerId(id, directory) {
-    const data = await getData("./src/data/photographers.json")
+    const data = await getData("../data/photographers.json")
     const photographer = data.photographers.find(
       (photographer) => photographer.id === parseInt(id)
     )

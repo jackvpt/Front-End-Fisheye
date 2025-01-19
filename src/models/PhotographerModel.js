@@ -19,7 +19,7 @@ export default class PhotographerModel {
    * @returns List of photographers
    */
   static async fetchPhotographers() {
-    const data = await getData("./src/data/photographers.json")
+    const data = await getData("/src/data/photographers.json")
     return data.photographers.map(
       (photographer) => new PhotographerModel(photographer)
     )

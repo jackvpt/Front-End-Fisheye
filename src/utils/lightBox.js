@@ -38,7 +38,7 @@ function openLightbox(medias, selectedMedia) {
   lightBoxModal.style.display = "flex"
 
   containerMedia.innerHTML = " "
-  const path = `./src/assets/images/sample_photos/${selectedMedia.directory}/${
+  const path = `../assets/images/sample_photos/${selectedMedia.directory}/${
     selectedMedia.image || selectedMedia.video
   }`
 

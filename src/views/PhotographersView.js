@@ -8,7 +8,7 @@ export default class PhotographersView {
     return `
       <article>
         <a
-          href="photographer.html?id=${photographer.id}"
+          href="src/pages/photographer.html?id=${photographer.id}"
           aria-label="Voir la page de ${photographer.name}"
         >
           ${picture}
