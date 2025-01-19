@@ -40,6 +40,12 @@ export default class PhotographerDetailsController {
   }
 }
 
+/**
+ * SORT MEDIAS
+ * @param {PhotgrapherModel} photographer 
+ * @param {MediaModel} medias 
+ * @param {string} sortOption 
+ */
 function sortMedias(photographer, medias, sortOption) {
   switch (sortOption) {
     case "popularity":
@@ -58,6 +64,11 @@ function sortMedias(photographer, medias, sortOption) {
   renderView(photographer, medias)
 }
 
+/**
+ * RENDER VIEW
+ * @param {Photgrapher} photographer 
+ * @param {MediaModel} medias 
+ */
 function renderView(photographer, medias) {
   PhotographerDetailsView.renderPhotographerDetails(photographer, medias)
 
@@ -69,7 +80,12 @@ function renderView(photographer, medias) {
   })
 }
 
-function addLike(photographer, medias, mediaId) {
+/**
+ * ADD LIKE TO MEDIA
+ * @param {MediaModel} medias 
+ * @param {string} mediaId 
+ */
+function addLike(medias, mediaId) {
   const selectedMedia = medias.find((media) => media.id === parseInt(mediaId))
   selectedMedia.addLike()
   const totalLikes = medias.reduce((acc, media) => acc + media.likes, 0)

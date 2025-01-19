@@ -3,6 +3,8 @@
  */
 const lightBoxMainWrapper = document.getElementById("container__lightbox_modal")
 const lightBoxModal = document.getElementById("lightbox-modal")
+const containerMedia = document.getElementById("container__lightbox-media")
+
 let mediaIndex
 let allMedias
 
@@ -20,7 +22,11 @@ function closeLightboxModal() {
   document.removeEventListener("keydown", handleKeyboardNavigation)
 }
 
-/** OPEN MODAL */
+/**
+ * OPEN MODAL
+ * @param {[MediaModel]} medias 
+ * @param {MediaModel} selectedMedia 
+ */
 function openLightbox(medias, selectedMedia) {
   allMedias = medias
   const lightBoxMainWrapper = document.getElementById(
@@ -31,7 +37,6 @@ function openLightbox(medias, selectedMedia) {
   lightBoxMainWrapper.style.display = "flex"
   lightBoxModal.style.display = "flex"
 
-  const containerMedia = document.getElementById("container__lightbox-media")
   containerMedia.innerHTML = " "
   const path = `./src/assets/images/sample_photos/${selectedMedia.directory}/${
     selectedMedia.image || selectedMedia.video
@@ -63,6 +68,7 @@ function openLightbox(medias, selectedMedia) {
   document.addEventListener("keydown", handleKeyboardNavigation)
 }
 
+/** PREVIOUS MEDIA */
 function previousMedia() {
   let index = mediaIndex - 1
   if (index < 0) {
@@ -71,12 +77,30 @@ function previousMedia() {
   openLightbox(allMedias, allMedias[index])
 }
 
+/**
+ * NEXT MEDIA
+ */
 function nextMedia() {
   let index = mediaIndex + 1
   if (index >= allMedias.length) {
     index = 0
   }
   openLightbox(allMedias, allMedias[index])
+}
+
+/**
+ * TOGGLE VIDEO PLAYBACK
+ */
+function toggleVideoPlayback() {
+  const videoElement = containerMedia.querySelector("video");
+
+  if (videoElement) {
+    if (videoElement.paused) {
+      videoElement.play();
+    } else {
+      videoElement.pause();
+    }
+  }
 }
 
 /**
@@ -92,6 +116,11 @@ function handleKeyboardNavigation(event) {
       break
     case "ArrowRight": // Next media
       nextMedia()
+      break
+    case " ": // Play/Pause for video media
+    case "k": // Play/Pause for video media
+      toggleVideoPlayback()
+      event.preventDefault()
       break
     default:
       break
