@@ -32,6 +32,25 @@
           <div id="photographer-header" class="photographer-header"></div>
         </section>
 
+        <!-- Sort bar -->
+        <section role="region" aria-labelledby="photographer-sortbar">
+          <div id="photographer-sortbar" class="photographer-sortbar">
+            <div class="sortbar">
+              <label for="sort" class="sortbar__label">Trier par</label>
+              <select
+                id="sort"
+                class="sortbar__select"
+                aria-label="Trier par"
+                onchange="sortMedias()"
+              >
+                <option value="popularity">Popularité</option>
+                <option value="date">Date</option>
+                <option value="title">Titre</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
         <!-- Medias -->
         <section role="region" aria-labelledby="photographer-medias">
           <div id="photographer-medias" class="photographer-medias"></div>
@@ -51,8 +70,7 @@
             <div
               id="photographer-infos__price"
               class="photographer-infos__price"
-            >
-            </div>
+            ></div>
           </div>
         </section>
       </main>

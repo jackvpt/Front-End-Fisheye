@@ -61,6 +61,24 @@
     width: 31%;
 }
 
+/* =========================================== */
+/* SORT BAR */
+/* =========================================== */
+.photographer-sortbar {
+    margin: 50px 100px 100px;
+}
+
+.photographer-sortbar label {
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 20px;
+}
+.photographer-sortbar select {
+    background-color: #901C1C;
+    color:white;
+    padding:10px;
+}
+
 
 /* =========================================== */
 /* MEDIA CARD */
@@ -109,11 +127,12 @@
     color: #901C1C;
 }
 
-.mediaCard .info .info__likes{
+.mediaCard .info .info__likes {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
+
 .mediaCard .info .info__likes-count {
     font-size: 16px;
     font-weight: 500;
@@ -121,7 +140,7 @@
 }
 
 .mediaCard .info .fa-heart {
-    margin-left:10px;
+    margin-left: 10px;
     font-size: 22px;
     color: #901C1C;
     cursor: pointer;
@@ -130,27 +149,27 @@
 /* =========================================== */
 /* INFOS (Nb likes & price) */
 /* =========================================== */
-.photographer-infos{
-    position:fixed;
+.photographer-infos {
+    position: fixed;
     bottom: 0%;
-    right:30px;
-    padding:10px 20px;
+    right: 30px;
+    padding: 10px 20px;
     background-color: #DB8876;
-    color:black;
+    color: black;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap:40px;
+    gap: 40px;
 
-    border-radius: 5px 5px 0 0 ;
+    border-radius: 5px 5px 0 0;
 }
 
-.photographer-infos div{
+.photographer-infos div {
     font-size: 18px;
     font-weight: 500;
 }
 
-.photographer-infos i{
+.photographer-infos i {
     margin-left: 10px;
 }
 
@@ -301,7 +320,8 @@ form .input-invalid {
     flex-direction: column;
 }
 
-.container__lightbox-media img, video {
+.container__lightbox-media img,
+video {
     height: 100%;
     object-fit: contain;
     border-radius: 5px;
