@@ -21,15 +21,18 @@ export default class PhotographerDetailsController {
         directory
       )
 
-      /** Render view */
-      PhotographerDetailsView.renderPhotographerDetails(photographer, medias)
+      sortMedias(photographer, medias, "")
 
-      /** Add event listeners */
-      const btnLike = document.querySelectorAll(".btn_like")
-
-      btnLike.forEach((btn) => {
-        const mediaId = btn.getAttribute("data-key")
-        btn.addEventListener("click", () => addLike(medias, mediaId))
+      /** Manage sort options */
+      const sortbarOptions = document.querySelectorAll(
+        ".sortbar-options-list li"
+      )
+      sortbarOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+          const value = option.getAttribute("data-value")
+          updateSortBar(value)
+          sortMedias(photographer, medias, value)
+        })
       })
     } catch (error) {
       console.error(error)
@@ -37,7 +40,36 @@ export default class PhotographerDetailsController {
   }
 }
 
-function addLike(medias, mediaId) {
+function sortMedias(photographer, medias, sortOption) {
+  switch (sortOption) {
+    case "popularity":
+      medias.sort((a, b) => b.likes - a.likes)
+      break
+    case "date":
+      medias.sort((a, b) => new Date(a.date) - new Date(b.date))
+      break
+    case "title":
+      medias.sort((a, b) => a.title.localeCompare(b.title))
+      break
+    default:
+      medias.sort((a, b) => b.likes - a.likes)
+      break
+  }
+  renderView(photographer, medias)
+}
+
+function renderView(photographer, medias) {
+  PhotographerDetailsView.renderPhotographerDetails(photographer, medias)
+
+  /** Manage like button */
+  const btnLike = document.querySelectorAll(".btn_like")
+  btnLike.forEach((btn) => {
+    const mediaId = btn.getAttribute("data-key")
+    btn.addEventListener("click", () => addLike(photographer, medias, mediaId))
+  })
+}
+
+function addLike(photographer, medias, mediaId) {
   const selectedMedia = medias.find((media) => media.id === parseInt(mediaId))
   selectedMedia.addLike()
   const totalLikes = medias.reduce((acc, media) => acc + media.likes, 0)

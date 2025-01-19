@@ -15,6 +15,9 @@ function closeLightboxModal() {
   lightBoxMainWrapper.style.display = "none"
   lightBoxModal.setAttribute("aria-hidden", "true")
   lightBoxModal.style.display = "none"
+
+  /** Remove event listener for keydown */
+  document.removeEventListener("keydown", handleKeyboardNavigation)
 }
 
 /** OPEN MODAL */
@@ -54,7 +57,10 @@ function openLightbox(medias, selectedMedia) {
 
   const caption = `<p class="lightbox-caption_text">${selectedMedia.title}</p>`
 
-  containerMedia.innerHTML = mediaSource + caption
+  containerMedia.innerHTML = `${mediaSource} ${caption}`
+
+  /** Add event listener for keyboard navigation */
+  document.addEventListener("keydown", handleKeyboardNavigation)
 }
 
 function previousMedia() {
@@ -71,4 +77,23 @@ function nextMedia() {
     index = 0
   }
   openLightbox(allMedias, allMedias[index])
+}
+
+/**
+ * HANDLE KEYBOARD NAVIGATION
+ */
+function handleKeyboardNavigation(event) {
+  switch (event.key) {
+    case "Escape": // Close modal
+      closeLightboxModal()
+      break
+    case "ArrowLeft": // Previous media
+      previousMedia()
+      break
+    case "ArrowRight": // Next media
+      nextMedia()
+      break
+    default:
+      break
+  }
 }

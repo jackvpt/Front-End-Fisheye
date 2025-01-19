@@ -33,21 +33,19 @@
         </section>
 
         <!-- Sort bar -->
-        <section role="region" aria-labelledby="photographer-sortbar">
-          <div id="photographer-sortbar" class="photographer-sortbar">
-            <div class="sortbar">
-              <label for="sort" class="sortbar__label">Trier par</label>
-              <select
-                id="sort"
-                class="sortbar__select"
-                aria-label="Trier par"
-                onchange="sortMedias()"
-              >
-                <option value="popularity">Popularité</option>
-                <option value="date">Date</option>
-                <option value="title">Titre</option>
-              </select>
-            </div>
+        <section
+          id="photographer-sortbar"
+          class="photographer-sortbar"
+          role="region"
+          aria-labelledby="photographer-sortbar"
+        >
+          <label>Trier par</label>
+          <div class="photographer-sortbar__sortmenu">
+            <button id="sortbar-btn" class="sortbar-btn">
+              <span id="sortbar-selectedOption"></span>
+              <i id="sortbar-chevron" class="fas fa-chevron-down"></i>
+            </button>
+            <ul id="sortbar-options-list" class="sortbar-options-list"></ul>
           </div>
         </section>
 
@@ -261,6 +259,7 @@
       <script src="src/utils/contactForm.js"></script>
       <script src="src/utils/lightBox.js"></script>
       <script src="src/utils/likesCount.js"></script>
+      <script src="src/utils/sortBar.js"></script>
     </body>
   </html>
 </html>

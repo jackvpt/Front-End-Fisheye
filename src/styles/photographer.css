@@ -66,18 +66,106 @@
 /* =========================================== */
 .photographer-sortbar {
     margin: 50px 100px 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
+
 
 .photographer-sortbar label {
     font-size: 18px;
     font-weight: 700;
     margin-right: 20px;
 }
-.photographer-sortbar select {
-    background-color: #901C1C;
-    color:white;
-    padding:10px;
+
+.photographer-sortbar__sortmenu {
+    position: relative;
+    width: 170px;
 }
+
+.sortbar-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+    background-color: #901C1C;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
+
+.sortbar-btn-open {
+    border-radius: 5px 5px 0 0;
+}
+
+.sortbar-btn:focus {
+    outline: none;
+}
+
+.sortbar-options-list {
+    display: none;
+    position: absolute;
+    width: 170px;
+    top: 100%;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border-radius: 0 0 5px 5px;
+    background-color: #901C1C;
+    color: white;
+    z-index: 1;
+}
+
+.sortbar-options-list.show {
+    display: block;
+}
+
+.sortbar-options li .option-hidden {
+    display: none;
+}
+
+
+.sortbar-options-list li {
+    padding: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    position:relative;
+}
+
+.sortbar-options-list li::before {
+    position:absolute;
+    content:"";
+    display: block;
+    width: 90%;
+    top:0;
+    left:5%;
+    height: 1px;
+    background-color: white;
+}
+
+.sortbar-options-list li:hover {
+    background-color: #DB8876;
+    color: black
+}
+
+#sortbar-chevron {
+    margin-left: 10px;
+    transition: transform 0.3s;
+}
+
+.sortbar-chevron-up {
+    transform: rotate(180deg);
+    /* Tourner le chevron */
+}
+
+
 
 
 /* =========================================== */

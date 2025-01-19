@@ -3,6 +3,7 @@ import {PhotographerMediaCaption} from "../templates/PhotographerMediaTemplate.j
 
 const PhotographerDetailsMedias = (photographer, medias) => {
   const container = document.querySelector(".photographer-medias")
+  container.replaceChildren()
   
   medias.forEach((media) => {
     const mediaArticle = document.createElement("article")
