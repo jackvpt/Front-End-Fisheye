@@ -1,6 +1,7 @@
 import PhotographerModel from "../models/PhotographerModel.js"
 import MediaModelManager from "../models/MediaModel.js"
 import PhotographerDetailsView from "../views/PhotographerDetailsView.js"
+import KeySort from "./keySortState.js"
 
 export default class PhotographerDetailsController {
   static async init() {
@@ -46,7 +47,7 @@ export default class PhotographerDetailsController {
  * @param {MediaModel} medias 
  * @param {string} sortOption 
  */
-function sortMedias(photographer, medias, sortOption) {
+function sortMedias(photographer, medias, sortOption="popularity") {
   switch (sortOption) {
     case "popularity":
       medias.sort((a, b) => b.likes - a.likes)
@@ -61,12 +62,13 @@ function sortMedias(photographer, medias, sortOption) {
       medias.sort((a, b) => b.likes - a.likes)
       break
   }
+  KeySort.keySort = sortOption
   renderView(photographer, medias)
 }
 
 /**
  * RENDER VIEW
- * @param {Photgrapher} photographer 
+ * @param {Photographer} photographer 
  * @param {MediaModel} medias 
  */
 function renderView(photographer, medias) {
@@ -76,7 +78,7 @@ function renderView(photographer, medias) {
   const btnLike = document.querySelectorAll(".btn_like")
   btnLike.forEach((btn) => {
     const mediaId = btn.getAttribute("data-key")
-    btn.addEventListener("click", () => addLike(medias, mediaId))
+    btn.addEventListener("click", () => addLike(photographer, medias, mediaId))
   })
 }
 
@@ -85,7 +87,7 @@ function renderView(photographer, medias) {
  * @param {MediaModel} medias 
  * @param {string} mediaId 
  */
-function addLike(medias, mediaId) {
+function addLike(photographer,medias, mediaId) {
   const selectedMedia = medias.find((media) => media.id === parseInt(mediaId))
   selectedMedia.addLike()
   const totalLikes = medias.reduce((acc, media) => acc + media.likes, 0)
@@ -95,4 +97,8 @@ function addLike(medias, mediaId) {
   likesCount.innerText = selectedMedia.likes
   const photographerLikes = document.getElementById("photographer-infos__likes")
   photographerLikes.innerText = totalLikes
+
+  if (KeySort.keySort === "popularity" || KeySort.keySort === "") {
+    sortMedias(photographer, medias, "popularity")
+  }
 }
