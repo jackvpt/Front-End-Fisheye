@@ -7,7 +7,7 @@
 const PhotographerMediaContent = (photographer, media) => {
   /** Set directory as photographer's name, replacing spaces by _ */
   const directory = photographer.name.replace(/\s+/g, "_")
-  const path = `../../src/assets/images/sample_photos/${directory}/${
+  const path = `/src/assets/images/sample_photos/${directory}/${
     media.image || media.video
   }`
 
@@ -44,7 +44,7 @@ const PhotographerMediaCaption = (media) => {
       <h2 id="media-title-${media.id}">${media.title}</h2>
       <div class="info__likes">
         <span id="info__likes-count-#${media.id}" class="info__likes-count">${media.likes}</span>
-        <i class="btn_like fas fa-heart" data-key="${media.id}" role="button" aria-label="J'aime ${media.title}"></i>
+        <i class="btn_like fas fa-heart" data-key="${media.id}" role="button" aria-label="J'aime ${media.title}" tabindex="0"></i>
       </div>
     </div>`
 }

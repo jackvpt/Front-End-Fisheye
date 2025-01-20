@@ -1,5 +1,5 @@
-import PhotographerPicture from "../templates/PhotographerPictureTemplate.js"
-import {openContactForm} from "../../utils/contactForm.js"
+import PhotographerPicture from "/src/views/templates/PhotographerPictureTemplate.js"
+import {openContactForm} from "/src/utils/contactForm.js"
 /**
  * GET DOM ELEMENTS
  */

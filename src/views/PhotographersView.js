@@ -1,4 +1,4 @@
-import PhotographerPicture from "./templates/PhotographerPictureTemplate.js"
+import PhotographerPicture from "/src/views/templates/PhotographerPictureTemplate.js"
 
 /**
  * RENDER PHOTOGRAPHER CARD

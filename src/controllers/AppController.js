@@ -1,6 +1,5 @@
-import PhotographerModel from "../models/PhotographerModel.js"
-// import PhotographersView from "../views/PhotographersView.js"
-import { renderPhotographersList } from "../views/PhotographersView.js"
+import PhotographerModel from "/src/models/PhotographerModel.js"
+import { renderPhotographersList } from "/src/views/PhotographersView.js"
 
 /**
  * APP CONTROLLER

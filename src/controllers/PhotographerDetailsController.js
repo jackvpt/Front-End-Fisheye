@@ -1,6 +1,6 @@
-import PhotographerModel from "../models/PhotographerModel.js"
-import MediaModelManager from "../models/MediaModel.js"
-import PhotographerDetailsView from "../views/PhotographerDetailsView.js"
+import PhotographerModel from "/src/models/PhotographerModel.js"
+import MediaModelManager from "/src/models/MediaModel.js"
+import PhotographerDetailsView from "/src/views/PhotographerDetailsView.js"
 // import KeySort from "./keySortState.js"
 
 export default class PhotographerDetailsController {

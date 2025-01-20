@@ -1,5 +1,5 @@
-import AppController from './controllers/AppController.js';
+import AppController from "/src/controllers/AppController.js"
 
-document.addEventListener('DOMContentLoaded', () => {
-  AppController.init();
-});
+document.addEventListener("DOMContentLoaded", () => {
+  AppController.init()
+})

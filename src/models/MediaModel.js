@@ -1,4 +1,4 @@
-import getData from "../utils/fetchData.js"
+import getData from "/src/utils/fetchData.js"
 
 /** Base model */
 class MediaModel {
