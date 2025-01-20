@@ -14,7 +14,7 @@ const PhotographerDetailsMedias = (photographer, medias) => {
 
     const containerMedia = document.createElement("div")
     containerMedia.innerHTML = PhotographerMediaContent(photographer, media)
-    containerMedia.addEventListener("click", () => openLightbox(medias, media))
+    // containerMedia.addEventListener("click", () => openLightbox(medias, media))
 
     mediaArticle.appendChild(containerMedia)
 

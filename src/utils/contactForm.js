@@ -17,19 +17,14 @@ const errorLastName = document.getElementById("error-lastName")
 const errorEmail = document.getElementById("error-email")
 const errorMessage = document.getElementById("error-message")
 
-document.getElementById("close-contact-modal").addEventListener("click", closeContactModal) 
-document.getElementById("firstName").addEventListener("blur", checkFirstName) 
-document.getElementById("lastName").addEventListener("blur", checkLastName) 
-document.getElementById("email").addEventListener("blur", checkEmail) 
-document.getElementById("message").addEventListener("blur", checkMessage)
-document.getElementById("contact-form-submit").addEventListener("click",submitContactForm)
-document.getElementById("contact-form-close").addEventListener("click",closeContactModal)
-
 /**
  * OPEN MODAL CONTACT FORM
  * @param {string} photographerName - The name of the photographer
  */
-function openContactForm(photographerName) {
+const openContactForm = (photographerName) => {
+  /** Set keyboard accessibility */
+  document.addEventListener("keydown", handleModalKeyEvents)
+
   /** Set ARIA properties */
   mainWrapper.setAttribute("aria-hidden", "true")
   contactModal.setAttribute("aria-hidden", "false")
@@ -47,7 +42,7 @@ function openContactForm(photographerName) {
 /**
  * CLOSE MODAL CONTACT FORM
  */
-function closeContactModal() {
+const closeContactModal = () => {
   /** Set ARIA properties */
   mainWrapper.setAttribute("aria-hidden", "false")
   contactModal.setAttribute("aria-hidden", "true")
@@ -56,13 +51,16 @@ function closeContactModal() {
   /** Set focus on the trigger button */
   const contactButton = document.getElementById("contact_button")
   contactButton.focus()
+
+  /** Remove keyboard accessibility */
+  document.removeEventListener("keydown", handleModalKeyEvents)
 }
 
 /**
  * CHECK FIRST NAME
  * @returns true if item is valid or false
  */
-function checkFirstName() {
+const checkFirstName = () => {
   if (!firstName.checkValidity()) {
     errorFirstName.textContent =
       "Veuillez entrer 2 caractères ou plus pour le prénom"
@@ -78,7 +76,7 @@ function checkFirstName() {
  * CHECK LAST NAME
  * @returns true if item is valid or false
  */
-function checkLastName() {
+const checkLastName = () => {
   if (!lastName.checkValidity()) {
     errorLastName.textContent =
       "Veuillez entrer 2 caractères ou plus pour le nom"
@@ -94,7 +92,7 @@ function checkLastName() {
  * CHECK EMAIL
  * @returns true if item is valid or false
  */
-function checkEmail() {
+const checkEmail = () => {
   const emailPattern = new RegExp(email.pattern)
 
   if (!email.checkValidity() || !emailPattern.test(email.value)) {
@@ -111,7 +109,7 @@ function checkEmail() {
  * CHECK MESSAGE
  * @returns true if item is valid or false
  */
-function checkMessage() {
+const checkMessage = () => {
   if (!message.checkValidity()) {
     errorMessage.textContent = "Veuillez écrire au moins 10 caractères"
     message.classList.add("input-invalid")
@@ -127,7 +125,7 @@ function checkMessage() {
  * @param {*} event
  * @returns true if all items are valid or false
  */
-function submitContactForm(event) {
+const submitContactForm = (event) => {
   event.preventDefault()
 
   if (checkFirstName() && checkLastName() && checkEmail() && checkMessage()) {
@@ -141,6 +139,39 @@ function submitContactForm(event) {
 
     // closeContactModal()
     document.forms["contact_form"].reset() // Reset all fields
+  }
+}
+
+setEventListeners()
+
+function setEventListeners() {
+  document
+    .getElementById("close-contact-modal")
+    .addEventListener("click", closeContactModal)
+  document.getElementById("firstName").addEventListener("blur", checkFirstName)
+  document.getElementById("lastName").addEventListener("blur", checkLastName)
+  document.getElementById("email").addEventListener("blur", checkEmail)
+  document.getElementById("message").addEventListener("blur", checkMessage)
+  document
+    .getElementById("contact-form-submit")
+    .addEventListener("click", submitContactForm)
+  document
+    .getElementById("contact-form-close")
+    .addEventListener("click", closeContactModal)
+}
+
+/** Set keyboard accessibility */
+function handleModalKeyEvents(event) {
+  /** Close modal on Escape press */
+  if (event.key === "Escape") {
+    closeContactModal()
+  }
+  if (event.key === "Enter" && event.target.tagName !== "TEXTAREA") {
+    event.preventDefault()
+    /** Submit modal on Enter press */
+    if (document.activeElement.closest("form") === contactForm) {
+      submitContactForm(event)
+    }
   }
 }
 
