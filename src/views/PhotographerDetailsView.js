@@ -16,8 +16,4 @@ export default class PhotographerDetailsView {
     const price = document.getElementById("photographer-infos__price")
     price.innerHTML = `${photographer.price}€ / jour`
   }
-
-  update(data) {
-    alert("update",data)
-  }
 }

@@ -1,6 +1,14 @@
 import getData from "../utils/fetchData.js"
 
+/**
+ * PHOTOGRAPHER MODEL
+ * Represents a photographer and provides static methods to fetch data
+ */
 export default class PhotographerModel {
+  /**
+   * Create a Photographer instance
+   * @param {Object} data
+   */
   constructor(data) {
     this.id = data.id
     this.name = data.name
@@ -15,7 +23,7 @@ export default class PhotographerModel {
   }
 
   /**
-   * Get all photographers
+   * GET ALL PHOTOGRAPHERS
    * @returns List of photographers
    */
   static async fetchPhotographers() {
@@ -26,12 +34,16 @@ export default class PhotographerModel {
   }
 
   /**
-   * Get one photographer
+   * GET ONE PHOTOGRAPHER
    * @param {int} id
    * @returns Photographer based on ID
    */
   static async fetchPhotographerById(id) {
-    const photographers =await this.fetchPhotographers()
+    if (!id || isNaN(id)) {
+      throw new Error("Invalid photographer ID provided.")
+    }
+
+    const photographers = await this.fetchPhotographers()
     const photographerSelected = photographers.find(
       (photographer) => photographer.id === parseInt(id)
     )
