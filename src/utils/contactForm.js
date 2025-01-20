@@ -2,7 +2,9 @@
  * GET DOM ELEMENTS
  */
 const mainWrapper = document.getElementById("photographer-profile")
-const modal = document.getElementById("container__contact_modal")
+const contactModal = document.getElementById("container__contact_modal")
+const modalName = document.getElementById("modal-photographerName")
+
 const firstName = document.getElementById("firstName")
 const lastName = document.getElementById("lastName")
 const email = document.getElementById("email")
@@ -10,25 +12,50 @@ const message = document.getElementById("message")
 const contactForm = document.getElementById("contact-modal__form")
 const contactMessage = document.getElementById("contact-modal__message")
 
-const triggerButton = document.querySelector(".contact_button")
-
 const errorFirstName = document.getElementById("error-firstName")
 const errorLastName = document.getElementById("error-lastName")
 const errorEmail = document.getElementById("error-email")
 const errorMessage = document.getElementById("error-message")
 
+document.getElementById("close-contact-modal").addEventListener("click", closeContactModal) 
+document.getElementById("firstName").addEventListener("blur", checkFirstName) 
+document.getElementById("lastName").addEventListener("blur", checkLastName) 
+document.getElementById("email").addEventListener("blur", checkEmail) 
+document.getElementById("message").addEventListener("blur", checkMessage)
+document.getElementById("contact-form-submit").addEventListener("click",submitContactForm)
+document.getElementById("contact-form-close").addEventListener("click",closeContactModal)
 
 /**
- * CLOSE MODAL
+ * OPEN MODAL CONTACT FORM
+ * @param {string} photographerName - The name of the photographer
+ */
+function openContactForm(photographerName) {
+  /** Set ARIA properties */
+  mainWrapper.setAttribute("aria-hidden", "true")
+  contactModal.setAttribute("aria-hidden", "false")
+
+  modalName.textContent = photographerName
+  contactModal.style.display = "flex"
+  contactForm.style.display = "block"
+  contactMessage.style.display = "none"
+
+  /** Set focus on the first input */
+  const firstInput = document.getElementById("firstName")
+  firstInput.focus()
+}
+
+/**
+ * CLOSE MODAL CONTACT FORM
  */
 function closeContactModal() {
   /** Set ARIA properties */
   mainWrapper.setAttribute("aria-hidden", "false")
-  modal.setAttribute("aria-hidden", "true")
-  modal.style.display = "none"
+  contactModal.setAttribute("aria-hidden", "true")
+  contactModal.style.display = "none"
 
   /** Set focus on the trigger button */
-  triggerButton.focus()
+  const contactButton = document.getElementById("contact_button")
+  contactButton.focus()
 }
 
 /**
@@ -116,3 +143,5 @@ function submitContactForm(event) {
     document.forms["contact_form"].reset() // Reset all fields
   }
 }
+
+export { openContactForm, closeContactModal, submitContactForm }
