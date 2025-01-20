@@ -6,6 +6,8 @@ import PhotographerPicture from "../templates/PhotographerPictureTemplate.js"
 const mainWrapper = document.getElementById("photographer-profile")
 const modalName = document.getElementById("modal-photographerName")
 const contactModal = document.getElementById("container__contact_modal")
+const contactForm = document.getElementById("contact-modal__form")
+const contactMessage = document.getElementById("contact-modal__message")
 
 function openContactForm(photographerName) {
   /** Set ARIA properties */
@@ -14,6 +16,8 @@ function openContactForm(photographerName) {
   
   modalName.textContent = photographerName
   contactModal.style.display = "flex"
+  contactForm.style.display = "block"
+  contactMessage.style.display = "none"
 
   /** Set focus on the first input */
   const firstInput = document.getElementById("firstName")

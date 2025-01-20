@@ -23,7 +23,11 @@
     <body>
       <header>
         <a href="/index.html">
-          <img src="../assets/images/logo.png" class="logo" alt="Logo Fisheye" />
+          <img
+            src="../assets/images/logo.png"
+            class="logo"
+            alt="Logo Fisheye"
+          />
         </a>
       </header>
       <main id="photographer-profile" class="photographer-profile">
@@ -39,7 +43,7 @@
           role="region"
           aria-labelledby="photographer-sortbar"
         >
-          <label>Trier par</label>
+          <div class="sortbar-label">Trier par</div>
           <div class="photographer-sortbar__sortmenu">
             <button id="sortbar-btn" class="sortbar-btn">
               <span id="sortbar-selectedOption"></span>
@@ -83,132 +87,143 @@
         aria-hidden="true"
       >
         <div class="contact-modal">
-          <header>
-            <div>
-              <h2 id="form-title">Contactez-moi</h2>
-              <h3 id="modal-photographerName">Name</h3>
+          <div id="contact-modal__form" class="contact-modal__form">
+            <div class="contact-modal__header">
+              <div>
+                <h2 id="form-title">Contactez-moi</h2>
+                <h3 id="modal-photographerName">Name</h3>
+              </div>
+              <button
+                class="close-modal"
+                aria-label="Fermer la fenêtre de contact"
+                onclick="closeContactModal()"
+              >
+                <img src="../assets/icons/close.svg" alt="Fermer" />
+              </button>
             </div>
-            <button
-              class="close-modal"
-              aria-label="Fermer la fenêtre de contact"
-              onclick="closeContactModal()"
+            <form
+              name="contact_form"
+              onsubmit="submitContactForm(event)"
+              novalidate
+              aria-labelledby="form-title"
             >
-              <img src="../assets/icons/close.svg" alt="Fermer" />
-            </button>
-          </header>
-          <form
-            name="contact_form"
-            onsubmit="submitContactForm(event)"
-            novalidate
-            aria-labelledby="form-title"
-          >
-            <!-- First name -->
-            <div class="formData">
-              <label for="firstName"
-                >Prénom<span class="requiredField"
-                  >(Champ obligatoire)</span
-                ></label
-              >
+              <!-- First name -->
+              <div class="formData">
+                <label for="firstName"
+                  >Prénom<span class="requiredField"
+                    >(Champ obligatoire)</span
+                  ></label
+                >
+                <input
+                  class="text-control"
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  minlength="2"
+                  required
+                  aria-required="true"
+                  aria-describedby="error-firstName"
+                  onblur="checkFirstName()"
+                /><br />
+                <div
+                  class="error-message"
+                  id="error-firstName"
+                  aria-live="polite"
+                ></div>
+              </div>
+
+              <!-- Last name -->
+              <div class="formData">
+                <label for="lastName"
+                  >Nom<span class="requiredField"
+                    >(Champ obligatoire)</span
+                  ></label
+                >
+                <input
+                  class="text-control"
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  minlength="2"
+                  required
+                  aria-required="true"
+                  aria-describedby="error-lastName"
+                  onblur="checkLastName();"
+                /><br />
+                <div
+                  class="error-message"
+                  id="error-lastName"
+                  aria-live="polite"
+                ></div>
+              </div>
+
+              <!-- Email -->
+              <div class="formData">
+                <label for="email"
+                  >Email<span class="requiredField"
+                    >(Champ obligatoire)</span
+                  ></label
+                >
+
+                <input
+                  class="text-control"
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  aria-required="true"
+                  aria-describedby="error-email"
+                  onblur="checkEmail();"
+                /><br />
+                <div
+                  class="error-message"
+                  id="error-email"
+                  aria-live="polite"
+                ></div>
+              </div>
+
+              <!-- Message -->
+              <div class="formData">
+                <label for="message"
+                  >Message<span class="requiredField"
+                    >(Champ obligatoire)</span
+                  ></label
+                >
+                <textarea
+                  class="text-control"
+                  id="message"
+                  name="message"
+                  rows="5"
+                  minlength="10"
+                  required
+                  aria-required="true"
+                  aria-describedby="error-message"
+                  onblur="checkMessage()"
+                ></textarea
+                ><br />
+                <div
+                  class="error-message"
+                  id="error-message"
+                  aria-live="polite"
+                ></div>
+              </div>
               <input
-                class="text-control"
-                type="text"
-                id="firstName"
-                name="firstName"
-                minlength="2"
-                required
-                aria-required="true"
-                aria-describedby="error-firstName"
-                onblur="checkFirstName()"
-              /><br />
-              <div
-                class="error-message"
-                id="error-firstName"
-                aria-live="polite"
-              ></div>
-            </div>
-
-            <!-- Last name -->
-            <div class="formData">
-              <label for="lastName"
-                >Nom<span class="requiredField"
-                  >(Champ obligatoire)</span
-                ></label
-              >
-              <input
-                class="text-control"
-                type="text"
-                id="lastName"
-                name="lastName"
-                minlength="2"
-                required
-                aria-required="true"
-                aria-describedby="error-lastName"
-                onblur="checkLastName();"
-              /><br />
-              <div
-                class="error-message"
-                id="error-lastName"
-                aria-live="polite"
-              ></div>
-            </div>
-
-            <!-- Email -->
-            <div class="formData">
-              <label for="email"
-                >Email<span class="requiredField"
-                  >(Champ obligatoire)</span
-                ></label
-              >
-
-              <input
-                class="text-control"
-                type="email"
-                id="email"
-                name="email"
-                required
-                aria-required="true"
-                aria-describedby="error-email"
-                onblur="checkEmail();"
-              /><br />
-              <div
-                class="error-message"
-                id="error-email"
-                aria-live="polite"
-              ></div>
-            </div>
-
-            <!-- Message -->
-            <div class="formData">
-              <label for="message"
-                >Message<span class="requiredField"
-                  >(Champ obligatoire)</span
-                ></label
-              >
-              <textarea
-                class="text-control"
-                id="message"
-                name="message"
-                rows="5"
-                minlength="10"
-                required
-                aria-required="true"
-                aria-describedby="error-message"
-                onblur="checkMessage()"
-              ></textarea
-              ><br />
-              <div
-                class="error-message"
-                id="error-message"
-                aria-live="polite"
-              ></div>
-            </div>
-            <input
-              class="contact_button"
-              type="submit"
-              value="Envoyer"
-              aria-label="Envoyer le formulaire de contact"
-            />
-          </form>
+                class="contact_button"
+                type="submit"
+                value="Envoyer"
+                aria-label="Envoyer le formulaire de contact"
+              />
+            </form>
+          </div>
+          <div id="contact-modal__message" class="contact-modal__message">
+            <h1>Merci !</h1>
+            <h2>Votre message a été envoyé</h2>
+            <button
+            class="contact_button"
+            aria-label="Fermer la fenêtre de contact"
+            onclick="closeContactModal()"
+          >Fermer</button>
+          </div>
         </div>
       </section>
 

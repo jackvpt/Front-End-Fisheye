@@ -60,7 +60,7 @@ function openLightbox(medias, selectedMedia) {
     console.warn("Le média fournit n'est pas valide: ", selectedMedia)
   }
 
-  const caption = `<p class="lightbox-caption_text">${selectedMedia.title}</p>`
+  const caption = `<h2 class="lightbox-caption_text">${selectedMedia.title}</h2>`
 
   containerMedia.innerHTML = `${mediaSource} ${caption}`
 

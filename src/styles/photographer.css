@@ -72,7 +72,7 @@
 }
 
 
-.photographer-sortbar label {
+.photographer-sortbar .sortbar-label {
     font-size: 18px;
     font-weight: 700;
     margin-right: 20px;
@@ -136,16 +136,16 @@
     cursor: pointer;
     font-size: 18px;
     font-weight: 700;
-    position:relative;
+    position: relative;
 }
 
 .sortbar-options-list li::before {
-    position:absolute;
-    content:"";
+    position: absolute;
+    content: "";
     display: block;
     width: 90%;
-    top:0;
-    left:5%;
+    top: 0;
+    left: 5%;
     height: 1px;
     background-color: white;
 }
@@ -164,8 +164,6 @@
     transform: rotate(180deg);
     /* Tourner le chevron */
 }
-
-
 
 
 /* =========================================== */
@@ -267,37 +265,43 @@
 
 .container__contact_modal {
     display: none;
+    flex-direction: column;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.4);
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
 .contact-modal {
+    display: flex;
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
     height: 90%;
-    display: flex;
     flex-direction: column;
     padding: 35px;
     margin: auto;
-
 }
 
+.contact-modal .contact_button:hover {
+    background-color: white;
+}
 
-.contact-modal header {
+.contact-modal__header {
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: flex-start;
     width: 100%;
     margin-bottom: 30px;
 }
 
-.contact-modal header h2,
+.contact-modal__header h2,
 h3 {
     font-size: 48px;
     font-weight: normal;
@@ -337,10 +341,10 @@ form label {
 
 form input {
     width: 100%;
-    height: 68px;
+    height: 40px;
     border: none;
     border-radius: 5px;
-    font-size: 24px;
+    font-size: 18px;
     padding: 10px;
 }
 
@@ -363,6 +367,25 @@ form .input-invalid {
     margin-bottom: 5px;
 }
 
+.contact-modal__message {
+    display:none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-modal__message h1 {
+    font-size:48px;
+    margin: 100px 0;
+}
+
+.contact-modal__message h2 {
+    font-size:40px;
+    margin-bottom: 100px;
+}
+
+.contact-modal__message .contact_button:hover{
+    background-color: white;
+}
 /* =========================================== */
 /* LIGHTBOX MODAL */
 /* =========================================== */

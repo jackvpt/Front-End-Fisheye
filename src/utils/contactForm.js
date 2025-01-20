@@ -7,6 +7,8 @@ const firstName = document.getElementById("firstName")
 const lastName = document.getElementById("lastName")
 const email = document.getElementById("email")
 const message = document.getElementById("message")
+const contactForm = document.getElementById("contact-modal__form")
+const contactMessage = document.getElementById("contact-modal__message")
 
 const triggerButton = document.querySelector(".contact_button")
 
@@ -14,6 +16,7 @@ const errorFirstName = document.getElementById("error-firstName")
 const errorLastName = document.getElementById("error-lastName")
 const errorEmail = document.getElementById("error-email")
 const errorMessage = document.getElementById("error-message")
+
 
 /**
  * CLOSE MODAL
@@ -106,7 +109,10 @@ function submitContactForm(event) {
     console.log("E-mail :>> ", email.value)
     console.log("Message :>> ", message.value)
 
-    closeContactModal()
+    contactForm.style.display = "none"
+    contactMessage.style.display = "flex"
+
+    // closeContactModal()
     document.forms["contact_form"].reset() // Reset all fields
   }
 }

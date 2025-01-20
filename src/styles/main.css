@@ -22,11 +22,12 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin: 0 100px;
     height: 90px;
+    color: #901C1C;
 
     .logo {
         height: 50px;
-        margin-left: 100px;
     }
 }
 
