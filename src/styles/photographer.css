@@ -246,13 +246,23 @@
     flex-direction: row;
     justify-content: space-between;
     gap: 40px;
-
     border-radius: 5px 5px 0 0;
 }
 
-.photographer-infos div {
+.photographer-infos p {
     font-size: 18px;
     font-weight: 500;
+}
+
+.photographer-infos__text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    p {
+        width: 30px;
+        text-align: right;
+    }
 }
 
 .photographer-infos i {
@@ -368,24 +378,25 @@ form .input-invalid {
 }
 
 .contact-modal__message {
-    display:none;
+    display: none;
     flex-direction: column;
     align-items: center;
 }
 
 .contact-modal__message h1 {
-    font-size:48px;
+    font-size: 48px;
     margin: 100px 0;
 }
 
 .contact-modal__message h2 {
-    font-size:40px;
+    font-size: 40px;
     margin-bottom: 100px;
 }
 
-.contact-modal__message .contact_button:hover{
+.contact-modal__message .contact_button:hover {
     background-color: white;
 }
+
 /* =========================================== */
 /* LIGHTBOX MODAL */
 /* =========================================== */

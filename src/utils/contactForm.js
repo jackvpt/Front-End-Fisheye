@@ -142,9 +142,10 @@ const submitContactForm = (event) => {
   }
 }
 
-setEventListeners()
-
-function setEventListeners() {
+/**
+ * SET EVENT LISTENERS
+ */
+const setEventListeners = () => {
   document
     .getElementById("close-contact-modal")
     .addEventListener("click", closeContactModal)
@@ -161,7 +162,7 @@ function setEventListeners() {
 }
 
 /** Set keyboard accessibility */
-function handleModalKeyEvents(event) {
+const handleModalKeyEvents = (event) => {
   /** Close modal on Escape press */
   if (event.key === "Escape") {
     closeContactModal()
@@ -174,5 +175,7 @@ function handleModalKeyEvents(event) {
     }
   }
 }
+
+setEventListeners()
 
 export { openContactForm, closeContactModal, submitContactForm }

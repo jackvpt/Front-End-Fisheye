@@ -13,7 +13,9 @@ const sortOptions = [
   },
 ]
 
-/** GET ELEMENT FROM DOM */
+/**
+ * GET DOM ELEMENTS
+ */
 const dom_selectedOption = document.getElementById("sortbar-selectedOption")
 const selectBtn = document.getElementById("sortbar-btn")
 const chevron = document.getElementById("sortbar-chevron")
@@ -27,6 +29,8 @@ sortOptions.forEach((option) => {
   const li = document.createElement("li")
   li.textContent = option.text
   li.setAttribute("data-value", option.value)
+  li.setAttribute("tabindex", "0")
+
   option.value === selectedOption.value ? (li.style.display = "none") : null
   dom_optionsList.appendChild(li)
 })

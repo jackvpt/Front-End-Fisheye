@@ -1,7 +1,7 @@
 import PhotographerModel from "../models/PhotographerModel.js"
 import MediaModelManager from "../models/MediaModel.js"
 import PhotographerDetailsView from "../views/PhotographerDetailsView.js"
-import KeySort from "./keySortState.js"
+// import KeySort from "./keySortState.js"
 
 export default class PhotographerDetailsController {
   static async init() {
@@ -62,7 +62,7 @@ function sortMedias(photographer, medias, sortOption="popularity") {
       medias.sort((a, b) => b.likes - a.likes)
       break
   }
-  KeySort.keySort = sortOption
+  // KeySort.keySort = sortOption
   renderView(photographer, medias)
 }
 
@@ -98,7 +98,7 @@ function addLike(photographer,medias, mediaId) {
   const photographerLikes = document.getElementById("photographer-infos__likes")
   photographerLikes.innerText = totalLikes
 
-  if (KeySort.keySort === "popularity" || KeySort.keySort === "") {
-    sortMedias(photographer, medias, "popularity")
-  }
+  // if (KeySort.keySort === "popularity" || KeySort.keySort === "") {
+  //   sortMedias(photographer, medias, "popularity")
+  // }
 }

@@ -76,13 +76,12 @@
       <!-- ======================= -->
       <section role="region" aria-labelledby="photographer-infos">
         <div id="photographer-infos" class="photographer-infos">
-          <div>
-            <span
+          <div class="photographer-infos__text">
+            <p
               id="photographer-infos__likes"
               class="photographer-infos__likes"
-            >
-            </span
-            ><i class="fas fa-heart"></i>
+            ></p>
+            <i class="fas fa-heart"></i>
           </div>
           <div
             id="photographer-infos__price"
@@ -252,9 +251,9 @@
       <div id="lightbox-modal" class="lightbox-modal">
         <div class="lightbox-leftButtons">
           <button
+            id="lightBox-previous"
             class="previous"
             aria-label="Image précédente"
-            onclick="previousMedia()"
           >
             <img src="/src/assets/icons/previous.svg" alt="Précédent" />
           </button>
@@ -265,18 +264,14 @@
         ></div>
         <div class="lightbox-rightButtons">
           <button
+            id="lightBox-close"
             class="close-modal"
             aria-label="Fermer la fenêtre de contact"
-            onclick="closeLightboxModal()"
           >
             <img src="/src/assets/icons/close_lightbox.svg" alt="Fermer" />
           </button>
 
-          <button
-            class="next"
-            aria-label="Image suivante"
-            onclick="nextMedia()"
-          >
+          <button id="lightBox-next" class="next" aria-label="Image suivante">
             <img src="/src/assets/icons/next.svg" alt="Suivant" />
           </button>
         </div>
@@ -288,8 +283,7 @@
     <!-- ======================= -->
     <script type="module" src="/src/utils/contactForm.js"></script>
     <script type="module" src="/src/photographerDetails.js"></script>
-    <script src="/src/utils/lightBox.js"></script>
-    <script src="/src/utils/likesCount.js"></script>
+    <script type="module" src="/src/utils/lightBox.js"></script>
     <script src="/src/utils/sortBar.js"></script>
   </body>
 </html>
