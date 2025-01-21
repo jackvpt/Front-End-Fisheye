@@ -12,19 +12,22 @@ const PhotographerDetailsMedias = (photographer, medias) => {
   container.replaceChildren()
 
   medias.forEach((media) => {
+    /** article : Media card */
     const mediaArticle = document.createElement("article")
     mediaArticle.id = `mediaCard-${media.id}`
     mediaArticle.classList.add("mediaCard")
     mediaArticle.setAttribute("role", "group")
     mediaArticle.setAttribute("aria-labelledby", `media-title-${media.id}`)
 
+    /** div : container for media */
     const containerMedia = document.createElement("div")
-    containerMedia.appendChild(PhotographerMediaContent(photographer, media))
     containerMedia.setAttribute("tabindex", "0")
+    containerMedia.appendChild(PhotographerMediaContent(photographer, media))
     containerMedia.addEventListener("click", () => openLightbox(medias, media))
 
     mediaArticle.appendChild(containerMedia)
 
+    /** div : container for caption */
     const containerMediaCaption = document.createElement("div")
     containerMediaCaption.appendChild(PhotographerMediaCaption(media))
     mediaArticle.appendChild(containerMediaCaption)

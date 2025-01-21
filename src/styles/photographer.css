@@ -37,7 +37,7 @@
     width: 31%;
 }
 
-.photographer-header .error404{
+.photographer-header .error404 {
     font-size: 36px;
     color: #901C1C;
 }
@@ -229,17 +229,18 @@
     cursor: pointer;
 }
 
-.media-btn_like{
+.media-btn_like {
     text-decoration: none;
     background-color: inherit;
-    border:none;
-    padding:0;
-    margin-left:10px;
+    border: none;
+    padding: 0;
+    margin-left: 10px;
 }
 
 /* =========================================== */
 /* INFOS (Nb likes & price) */
 /* =========================================== */
+
 .photographer-infos {
     position: fixed;
     bottom: 0%;

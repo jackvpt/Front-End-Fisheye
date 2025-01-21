@@ -1,7 +1,7 @@
 import getData from "/src/utils/fetchData.js"
 
 /**
- * Base model for media.
+ * BASE MODEL FOR MEDIA
  * Represents shared properties and behaviors for all media types.
  */
 class MediaModel {
@@ -29,7 +29,7 @@ class MediaModel {
 }
 
 /**
- * Model for image media.
+ * MODEL FOR IMAGE MEDIA
  * Adds an additional property specific to image files.
  */
 class ImageModel extends MediaModel {
@@ -40,7 +40,7 @@ class ImageModel extends MediaModel {
 }
 
 /**
- * Model for video media.
+ * MODEL FOR VIDEO MEDIA
  * Adds an additional property specific to video files.
  */
 class VideoModel extends MediaModel {
@@ -51,7 +51,7 @@ class VideoModel extends MediaModel {
 }
 
 /**
- * Factory class to create media objects.
+ * FACTORY CLASS FOR MEDIA
  * Decides the appropriate model to instantiate based on the media type.
  */
 class MediaFactory {
@@ -74,7 +74,7 @@ class MediaFactory {
 }
 
 /**
- * Manager class for handling media-related operations.
+ * MANAGER CLASS FOR HANDLING MEDIA-RELATED OPERATIONS
  */
 export default class MediaModelManager {
   /**

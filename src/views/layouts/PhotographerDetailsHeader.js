@@ -1,5 +1,4 @@
 import PhotographerPicture from "/src/views/templates/PhotographerPictureTemplate.js"
-import { openContactForm } from "/src/utils/contactForm.js"
 
 const PhotographerDetailsHeader = (photographer) => {
   /** GET DOM ELEMENTS */
@@ -47,9 +46,7 @@ const PhotographerDetailsHeader = (photographer) => {
   contactButton.setAttribute("role", "button")
   contactButton.setAttribute("aria-label", `Contacter ${photographer.name}`)
   contactButton.innerText = "Contactez-moi"
-  contactButton.addEventListener("click", () =>
-    openContactForm(photographer.name)
-  )
+
   headerButton.appendChild(contactButton)
 
   /** Header picture */

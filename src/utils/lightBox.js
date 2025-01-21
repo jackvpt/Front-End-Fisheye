@@ -67,7 +67,9 @@ const closeLightboxModal = () => {
   document.removeEventListener("keydown", handleKeyboardNavigation)
 }
 
-/** PREVIOUS MEDIA */
+/**
+ * PREVIOUS MEDIA
+ */
 const previousMedia = () => {
   let index = mediaIndex - 1
   if (index < 0) {

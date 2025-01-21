@@ -161,7 +161,9 @@ const setEventListeners = () => {
     .addEventListener("click", closeContactModal)
 }
 
-/** Set keyboard accessibility */
+/**
+ * SET KEYBOARD ACCESSIBILITY
+ */
 const handleModalKeyEvents = (event) => {
   /** Close modal on Escape press */
   if (event.key === "Escape") {

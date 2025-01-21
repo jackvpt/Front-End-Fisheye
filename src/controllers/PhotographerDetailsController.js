@@ -1,6 +1,7 @@
 import PhotographerModel from "/src/models/PhotographerModel.js"
 import MediaModelManager from "/src/models/MediaModel.js"
 import PhotographerDetailsView from "/src/views/PhotographerDetailsView.js"
+import { openContactForm } from "/src/utils/contactForm.js"
 
 export default class PhotographerDetailsController {
   static async init() {
@@ -35,6 +36,12 @@ export default class PhotographerDetailsController {
         updateSortBar(value)
         sortMedias(photographer, medias, value)
       }
+
+      /** Set event listeners */
+      const contactButton = document.getElementById("contact_button")
+      contactButton.addEventListener("click", () =>
+        openContactForm(photographer.name)
+      )
 
       /** Catch click or Enter events */
       sortbarOptions.forEach((option) => {

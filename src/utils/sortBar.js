@@ -21,7 +21,9 @@ const selectBtn = document.getElementById("sortbar-btn")
 const chevron = document.getElementById("sortbar-chevron")
 const dom_optionsList = document.getElementById("sortbar-options-list")
 
-/** INITIALIZE SORTBAR */
+/**
+ * INITIALIZE SORTBAR
+ */
 const selectedOption = sortOptions[0] // Select first option as default
 dom_selectedOption.textContent = selectedOption.text // Display selected option
 
