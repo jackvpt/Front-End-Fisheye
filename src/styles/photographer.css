@@ -279,7 +279,7 @@
 /* CONTACT MODAL */
 /* =========================================== */
 
-.container__contact_modal {
+.container__contact-modal {
     display: none;
     flex-direction: column;
     position: fixed;
@@ -308,7 +308,7 @@
     background-color: white;
 }
 
-.contact-modal__header {
+.contact-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -317,14 +317,14 @@
     margin-bottom: 30px;
 }
 
-.contact-modal__header h2,
+.contact-header h2,
 h3 {
     font-size: 48px;
     font-weight: normal;
 }
 
 
-.contact-modal .close-modal {
+.contact-modal .btn-close {
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -383,20 +383,38 @@ form .input-invalid {
     margin-bottom: 5px;
 }
 
-.contact-modal__message {
+.wrapper-contact-message {
     display: none;
     flex-direction: column;
     align-items: center;
 }
 
-.contact-modal__message h1 {
+.wrapper-contact-message h1 {
     font-size: 48px;
     margin: 100px 0;
 }
 
-.contact-modal__message h2 {
+.wrapper-contact-message h2 {
     font-size: 40px;
     margin-bottom: 100px;
+}
+
+.btn-contact-submit {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-contact-submit:hover {
+    background-color:white;
+    color: black;
 }
 
 .contact-modal__message .contact_button:hover {

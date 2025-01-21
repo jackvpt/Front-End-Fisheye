@@ -2,15 +2,15 @@
  * GET DOM ELEMENTS
  */
 const mainWrapper = document.getElementById("photographer-profile")
-const contactModal = document.getElementById("container__contact_modal")
-const modalName = document.getElementById("modal-photographerName")
+const contactModal = document.getElementById("container__contact-modal")
+const contactName = document.getElementById("contact-photographerName")
 
 const firstName = document.getElementById("firstName")
 const lastName = document.getElementById("lastName")
 const email = document.getElementById("email")
 const message = document.getElementById("message")
-const contactForm = document.getElementById("contact-modal__form")
-const contactMessage = document.getElementById("contact-modal__message")
+const contactForm = document.getElementById("wrapper-contact__form")
+const contactMessage = document.getElementById("wrapper-contact-message")
 
 const errorFirstName = document.getElementById("error-firstName")
 const errorLastName = document.getElementById("error-lastName")
@@ -29,7 +29,7 @@ const openContactForm = (photographerName) => {
   mainWrapper.setAttribute("aria-hidden", "true")
   contactModal.setAttribute("aria-hidden", "false")
 
-  modalName.textContent = photographerName
+  contactName.textContent = photographerName
   contactModal.style.display = "flex"
   contactForm.style.display = "block"
   contactMessage.style.display = "none"
@@ -147,15 +147,18 @@ const submitContactForm = (event) => {
  */
 const setEventListeners = () => {
   document
-    .getElementById("close-contact-modal")
+    .getElementById("btn-contact-close")
     .addEventListener("click", closeContactModal)
   document.getElementById("firstName").addEventListener("blur", checkFirstName)
   document.getElementById("lastName").addEventListener("blur", checkLastName)
   document.getElementById("email").addEventListener("blur", checkEmail)
   document.getElementById("message").addEventListener("blur", checkMessage)
-contactForm.addEventListener("submit", submitContactForm)
+  contactForm.addEventListener("submit", submitContactForm)
   document
-    .getElementById("contact-form-close")
+    .getElementById("btn-contact-close")
+    .addEventListener("click", closeContactModal)
+  document
+    .getElementById("btn-contact-message-close")
     .addEventListener("click", closeContactModal)
 }
 

@@ -95,28 +95,28 @@
     <!-- CONTACT MODAL -->
     <!-- ======================= -->
     <section
-      id="container__contact_modal"
-      class="container__contact_modal"
+      id="container__contact-modal"
+      class="container__contact-modal"
       role="dialog"
       aria-hidden="true"
     >
       <div class="contact-modal">
-        <div id="contact-modal__form" class="contact-modal__form">
-          <div class="contact-modal__header">
+        <div id="wrapper-contact__form" class="wrapper-contact__form">
+          <div class="contact-header">
             <div>
-              <h2 id="form-title">Contactez-moi</h2>
-              <h3 id="modal-photographerName">Name</h3>
+              <h2 id="contact-title">Contactez-moi</h2>
+              <h3 id="contact-photographerName">Name</h3>
             </div>
             <button
-              id="close-contact-modal"
-              class="close-modal"
+              id="btn-contact-close"
+              class="btn-close"
               aria-label="Fermer la fenêtre de contact"
             >
               <img src="/src/assets/icons/close.svg" alt="Fermer" />
             </button>
           </div>
           <form
-            id="contact-form-submit"
+            id="contact-form"
             name="contact_form"
             novalidate
             aria-labelledby="form-title"
@@ -176,9 +176,7 @@
                   >(Champ obligatoire)</span
                 ></label
               >
-
               <input
-                class="text-control"
                 type="email"
                 id="email"
                 name="email"
@@ -201,7 +199,6 @@
                 ></label
               >
               <textarea
-                class="text-control"
                 id="message"
                 name="message"
                 rows="5"
@@ -220,19 +217,19 @@
 
             <!-- Submit button -->
             <input
-              class="contact_button"
+              class="btn-contact-submit"
               type="submit"
               value="Envoyer"
               aria-label="Envoyer le formulaire de contact"
             />
           </form>
         </div>
-        <div id="contact-modal__message" class="contact-modal__message">
+        <div id="wrapper-contact-message" class="wrapper-contact-message">
           <h1>Merci !</h1>
           <h2>Votre message a été envoyé</h2>
           <button
-            id="contact-form-close"
-            class="contact_button"
+            id="btn-contact-message-close"
+            class="btn-contact-submit"
             aria-label="Fermer la fenêtre de contact"
           >
             Fermer
