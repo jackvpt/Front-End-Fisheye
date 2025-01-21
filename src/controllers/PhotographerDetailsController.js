@@ -83,7 +83,7 @@ function renderView(photographer, medias) {
   PhotographerDetailsView.renderPhotographerDetails(photographer, medias)
 
   /** Manage like button */
-  const btnLike = document.querySelectorAll(".btn_like")
+  const btnLike = document.querySelectorAll(".media-btn_like")
   btnLike.forEach((btn) => {
     const mediaId = btn.getAttribute("data-key")
     btn.addEventListener("click", () => addLike(medias, mediaId))

@@ -220,10 +220,17 @@
 }
 
 .mediaCard .info .fa-heart {
-    margin-left: 10px;
     font-size: 22px;
     color: #901C1C;
     cursor: pointer;
+}
+
+.media-btn_like{
+    text-decoration: none;
+    background-color: inherit;
+    border:none;
+    padding:0;
+    margin-left:10px;
 }
 
 /* =========================================== */

@@ -44,9 +44,12 @@ const PhotographerMediaCaption = (media) => {
       <h2 id="media-title-${media.id}" tabindex="0">${media.title}</h2>
       <div class="info__likes">
         <span id="info__likes-count-#${media.id}" class="info__likes-count" tabindex="0">${media.likes}</span>
-        <i class="btn_like fas fa-heart" data-key="${media.id}" role="button" aria-label="J'aime ${media.title}" tabindex="0"></i>
+        <button class="media-btn_like" data-key="${media.id}" aria-label="J'aime ${media.title}" tabindex="0">
+          <i class="fas fa-heart"></i>
+        </button>      
       </div>
-    </div>`
+    </div>
+    `
 }
 
 export { PhotographerMediaContent, PhotographerMediaCaption }
