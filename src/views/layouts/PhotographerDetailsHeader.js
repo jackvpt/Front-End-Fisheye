@@ -14,11 +14,11 @@ const PhotographerDetailsHeader = (photographer) => {
 
   container.innerHTML = `
     <div class="photographer-header__info" role="region" aria-labelledby="photographer-name">
-        <h1 id="photographer-name">${photographer.name}</h1>
-        <h2 aria-label="Localisation de ${photographer.name}">
+        <h1 id="photographer-name" tabindex="0">${photographer.name}</h1>
+        <h2 aria-label="Localisation de ${photographer.name}" tabindex="0">
           ${photographer.city}, ${photographer.country}
         </h2>
-        <h3 aria-label="Devise de ${photographer.name}">
+        <h3 aria-label="Devise de ${photographer.name}" tabindex="0">
             ${photographer.tagline}
         </h3>
     </div>

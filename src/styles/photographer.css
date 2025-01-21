@@ -96,15 +96,10 @@
     background-color: #901C1C;
     color: white;
     cursor: pointer;
-    outline: none;
 }
 
 .sortbar-btn-open {
     border-radius: 5px 5px 0 0;
-}
-
-.sortbar-btn:focus {
-    outline: none;
 }
 
 .sortbar-options-list {
@@ -129,7 +124,6 @@
 .sortbar-options li .option-hidden {
     display: none;
 }
-
 
 .sortbar-options-list li {
     padding: 20px;

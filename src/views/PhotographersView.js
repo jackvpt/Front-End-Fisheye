@@ -14,18 +14,19 @@ const renderPhotographerCard = (photographer) => {
       <a
         href="/src/pages/photographer.html?id=${photographer.id}"
         aria-label="Voir la page de ${photographer.name}"
+        tabindex="0"
       >
         ${picture}
-      <h2 id="photographer-${photographer.id}-name">${photographer.name}</h2>
-        <h3 aria-label="Localisation de ${photographer.name}">
-          ${photographer.city}, ${photographer.country}
-        </h3>
-        <h4 aria-label="Devise de ${photographer.name}">
-          ${photographer.tagline}
-        </h4>
-        <h5 aria-label="Prix par jour de ${photographer.name}">
-          ${photographer.price}€/jour
-        </h5>
+      <h2 id="photographer-${photographer.id}-name" tabindex="0">${photographer.name}</h2>
+      <h3 aria-label="Localisation de ${photographer.name}" tabindex="0">
+        ${photographer.city}, ${photographer.country}
+      </h3>
+      <h4 aria-label="Devise de ${photographer.name}" tabindex="0">
+        ${photographer.tagline}
+      </h4>
+      <h5 aria-label="Prix par jour de ${photographer.name}" tabindex="0">
+        ${photographer.price}€/jour
+      </h5>
       </a>
   </article>
   `

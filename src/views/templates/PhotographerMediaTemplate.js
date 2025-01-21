@@ -41,9 +41,9 @@ const PhotographerMediaContent = (photographer, media) => {
 const PhotographerMediaCaption = (media) => {
   return `
     <div class="info">
-      <h2 id="media-title-${media.id}">${media.title}</h2>
+      <h2 id="media-title-${media.id}" tabindex="0">${media.title}</h2>
       <div class="info__likes">
-        <span id="info__likes-count-#${media.id}" class="info__likes-count">${media.likes}</span>
+        <span id="info__likes-count-#${media.id}" class="info__likes-count" tabindex="0">${media.likes}</span>
         <i class="btn_like fas fa-heart" data-key="${media.id}" role="button" aria-label="J'aime ${media.title}" tabindex="0"></i>
       </div>
     </div>`
