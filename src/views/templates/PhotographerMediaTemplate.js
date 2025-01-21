@@ -56,7 +56,6 @@ const PhotographerMediaCaption = (media) => {
   /** h2 : image title */
   const h2 = document.createElement("h2")
   h2.id = `media-title-${media.id}`
-  h2.tabIndex = 0
   h2.innerText = media.title
 
   /** div : likes counter */
@@ -66,7 +65,6 @@ const PhotographerMediaCaption = (media) => {
   const likesCount = document.createElement("span")
   likesCount.id = `info__likes-count-#${media.id}`
   likesCount.classList.add("info__likes-count")
-  likesCount.tabIndex = 0
   likesCount.innerText = media.likes
 
   /** button : like button */

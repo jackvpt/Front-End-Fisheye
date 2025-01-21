@@ -22,25 +22,21 @@ const renderPhotographerCard = (photographer) => {
   /** h2 : photographer name */
   const h2 = document.createElement("h2")
   h2.id = `photographer-${photographer.id}-name`
-  h2.tabIndex = 0
   h2.innerText = photographer.name
 
   /** h3 : photographer location */
   const h3 = document.createElement("h3")
   h3.setAttribute("aria-label", `Localisation de ${photographer.name}`)
-  h3.tabIndex = 0
   h3.innerText = `${photographer.city}, ${photographer.country}`
 
   /** h4 : photographer tagline */
   const h4 = document.createElement("h4")
   h4.setAttribute("aria-label", `Devise de ${photographer.name}`)
-  h4.tabIndex = 0
   h4.innerText = photographer.tagline
 
   /** h5 : photographer price */
   const h5 = document.createElement("h5")
   h5.setAttribute("aria-label", `Prix par jour de ${photographer.name}`)
-  h5.tabIndex = 0
   h5.innerText = `${photographer.price}€/jour`
 
   article.appendChild(anchor)
