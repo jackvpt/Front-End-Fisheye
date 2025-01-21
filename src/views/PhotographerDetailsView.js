@@ -2,6 +2,12 @@ import PhotographerDetailsHeader from "/src/views/layouts/PhotographerDetailsHea
 import PhotographerDetailsMedias from "/src/views/layouts/PhotographerDetailsMedias.js"
 
 export default class PhotographerDetailsView {
+  /**
+   * Render the photographer's details page
+   * This method updates the photographer's details, including the header, media, and photographer information.
+   * @param {PhotographerModel} photographer - The photographer object containing details like name, city, etc.
+   * @param {MediaModel[]} medias - The array of media objects (photos, videos) associated with the photographer
+   */
   static renderPhotographerDetails(photographer, medias) {
     /** Header */
     PhotographerDetailsHeader(photographer)
@@ -15,5 +21,14 @@ export default class PhotographerDetailsView {
 
     const price = document.getElementById("photographer-infos__price")
     price.innerHTML = `${photographer.price}€ / jour`
+  }
+
+  /**
+   * Render an error message if the photographer's page is not found
+   * This method updates the page with an error message when the photographer's details are not available.
+   */
+  static renderError() {
+    const header = document.getElementById("photographer-header")
+    header.innerHTML = `<p class="error404">Page du photographe introuvable.</p>`
   }
 }

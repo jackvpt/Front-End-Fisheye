@@ -7,14 +7,15 @@ export default class PhotographerDetailsController {
     const params = new URLSearchParams(window.location.search)
     const id = params.get("id")
 
-    // if (!id) {
-    //   PhotographerDetailsView.renderError("No photographer ID provided in URL.")
-    //   return
-    // }
+    if (!id) {
+      PhotographerDetailsView.renderError()
+      return
+    }
 
     try {
       /** Fetch data */
       const photographer = await PhotographerModel.fetchPhotographerById(id)
+
       const directory = photographer.directory
       const medias = await MediaModelManager.fetchMediasByPhotographerId(
         id,
@@ -45,6 +46,7 @@ export default class PhotographerDetailsController {
         })
       })
     } catch (error) {
+      PhotographerDetailsView.renderError()
       console.error(error)
     }
   }

@@ -3,10 +3,9 @@ import {openContactForm} from "/src/utils/contactForm.js"
 /**
  * GET DOM ELEMENTS
  */
-// const mainWrapper = document.getElementById("photographer-profile")
-const contactModal = document.getElementById("container__contact_modal")
-const contactForm = document.getElementById("contact-modal__form")
-const contactMessage = document.getElementById("contact-modal__message")
+// const contactModal = document.getElementById("container__contact_modal")
+// const contactForm = document.getElementById("contact-modal__form")
+// const contactMessage = document.getElementById("contact-modal__message")
 const container = document.getElementById("photographer-header")
 
 const PhotographerDetailsHeader = (photographer) => {
@@ -40,7 +39,5 @@ const PhotographerDetailsHeader = (photographer) => {
     openContactForm(photographer.name)
   )
 }
-
-
 
 export default PhotographerDetailsHeader

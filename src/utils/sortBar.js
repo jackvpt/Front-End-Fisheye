@@ -25,15 +25,23 @@ const dom_optionsList = document.getElementById("sortbar-options-list")
 const selectedOption = sortOptions[0] // Select first option as default
 dom_selectedOption.textContent = selectedOption.text // Display selected option
 
+dom_optionsList.setAttribute("role", "listbox")
+
 sortOptions.forEach((option) => {
   const li = document.createElement("li")
   li.textContent = option.text
   li.setAttribute("data-value", option.value)
   li.setAttribute("tabindex", "0")
+  li.setAttribute("role", "option")
 
   option.value === selectedOption.value ? (li.style.display = "none") : null
   dom_optionsList.appendChild(li)
 })
+
+selectBtn.setAttribute(
+  "aria-expanded",
+  dom_optionsList.classList.contains("show").toString()
+)
 
 selectBtn.addEventListener("click", () => {
   dom_optionsList.classList.toggle("show") // Open or close list
@@ -43,7 +51,7 @@ selectBtn.addEventListener("click", () => {
 
 /**
  * UPDATE SORTBAR (SELECTED OPTION & DISPLAYED LIST)
- * @param {string} selectedOption 
+ * @param {string} selectedOption
  */
 function updateSortBar(selectedOption) {
   dom_selectedOption.textContent = sortOptions.find(

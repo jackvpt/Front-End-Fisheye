@@ -1,11 +1,12 @@
 /**
  * Create the media content (image or video)
- * @param {PhotographerModel} photographer
- * @param {MediaModel} media
- * @returns string
+ * This function generates the media content (image or video) based on the type of media.
+ * @param {PhotographerModel} photographer - The photographer object
+ * @param {MediaModel} media - The media object (image or video)
+ * @returns {string} The HTML content to insert into the page
  */
 const PhotographerMediaContent = (photographer, media) => {
-  /** Set directory as photographer's name, replacing spaces by _ */
+  /** Generate the path to the media file (replace spaces with underscores in the photographer's name) */
   const directory = photographer.name.replace(/\s+/g, "_")
   const path = `/src/assets/images/sample_photos/${directory}/${
     media.image || media.video
@@ -13,6 +14,7 @@ const PhotographerMediaContent = (photographer, media) => {
 
   /** Set media according to type (image or video) */
   let mediaSource
+
   if (media.image) {
     mediaSource = `<img 
       src="${path}"
@@ -35,8 +37,9 @@ const PhotographerMediaContent = (photographer, media) => {
 
 /**
  * Create the media caption
- * @param {MediaModel} media
- * @returns string
+ * This function generates the caption for a media (title and "like" button).
+ * @param {MediaModel} media - The media object
+ * @returns {string} The HTML content for the caption
  */
 const PhotographerMediaCaption = (media) => {
   return `
