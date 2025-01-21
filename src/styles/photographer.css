@@ -70,7 +70,7 @@
 /* SORT BAR */
 /* =========================================== */
 .photographer-sortbar {
-    margin: 50px 100px 100px;
+    margin: 50px 100px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -169,7 +169,7 @@
 /* =========================================== */
 
 .photographer-medias {
-    margin: 100px;
+    margin:0 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
