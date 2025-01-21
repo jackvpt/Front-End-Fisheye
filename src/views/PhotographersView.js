@@ -3,33 +3,53 @@ import PhotographerPicture from "/src/views/templates/PhotographerPictureTemplat
 /**
  * RENDER PHOTOGRAPHER CARD
  * @param {PhotographerModel} photographer - The photographer to render
- * @returns {string} - String containing the HTML for the photographer card
+ * @returns {<article>} - DOM element containing the HTML for the photographer card
  */
 const renderPhotographerCard = (photographer) => {
   // Use Photographer picture template
   const picture = PhotographerPicture(photographer.portrait)
 
-  return `
-    <article aria-labelledby="photographer-${photographer.id}-name">
-      <a
-        href="/src/pages/photographer.html?id=${photographer.id}"
-        aria-label="Voir la page de ${photographer.name}"
-        tabindex="0"
-      >
-        ${picture}
-      <h2 id="photographer-${photographer.id}-name" tabindex="0">${photographer.name}</h2>
-      <h3 aria-label="Localisation de ${photographer.name}" tabindex="0">
-        ${photographer.city}, ${photographer.country}
-      </h3>
-      <h4 aria-label="Devise de ${photographer.name}" tabindex="0">
-        ${photographer.tagline}
-      </h4>
-      <h5 aria-label="Prix par jour de ${photographer.name}" tabindex="0">
-        ${photographer.price}€/jour
-      </h5>
-      </a>
-  </article>
-  `
+  const article = document.createElement("article")
+  article.setAttribute("aria-labelledby", `photographer-${photographer.id}-name`)
+
+  /** anchor to link to photographer page */
+  const anchor = document.createElement("a")
+  anchor.href = `/src/pages/photographer.html?id=${photographer.id}`
+  anchor.setAttribute("aria-label", `Voir la page de ${photographer.name}`)
+  anchor.tabIndex = 0
+  anchor.appendChild(picture)
+
+  /** h2 : photographer name */
+  const h2 = document.createElement("h2")
+  h2.id = `photographer-${photographer.id}-name`
+  h2.tabIndex = 0
+  h2.innerText = photographer.name
+
+  /** h3 : photographer location */
+  const h3 = document.createElement("h3")
+  h3.setAttribute("aria-label", `Localisation de ${photographer.name}`)
+  h3.tabIndex = 0
+  h3.innerText = `${photographer.city}, ${photographer.country}`
+
+  /** h4 : photographer tagline */
+  const h4 = document.createElement("h4")
+  h4.setAttribute("aria-label", `Devise de ${photographer.name}`)
+  h4.tabIndex = 0
+  h4.innerText = photographer.tagline
+
+  /** h5 : photographer price */
+  const h5 = document.createElement("h5")
+  h5.setAttribute("aria-label", `Prix par jour de ${photographer.name}`)
+  h5.tabIndex = 0
+  h5.innerText = `${photographer.price}€/jour`
+
+  article.appendChild(anchor)
+  article.appendChild(h2)
+  article.appendChild(h3)
+  article.appendChild(h4)
+  article.appendChild(h5)
+
+  return article
 }
 
 /**
@@ -38,5 +58,7 @@ const renderPhotographerCard = (photographer) => {
  */
 export const renderPhotographersList = (photographers) => {
   const container = document.getElementById("photographer_section")
-  container.innerHTML = photographers.map(renderPhotographerCard).join("")
+  photographers.forEach((photographer) => {
+    container.appendChild(renderPhotographerCard(photographer))
+  })
 }

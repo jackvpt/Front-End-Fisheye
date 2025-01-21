@@ -1,43 +1,65 @@
 import PhotographerPicture from "/src/views/templates/PhotographerPictureTemplate.js"
-import {openContactForm} from "/src/utils/contactForm.js"
-/**
- * GET DOM ELEMENTS
- */
-// const contactModal = document.getElementById("container__contact_modal")
-// const contactForm = document.getElementById("contact-modal__form")
-// const contactMessage = document.getElementById("contact-modal__message")
-const container = document.getElementById("photographer-header")
+import { openContactForm } from "/src/utils/contactForm.js"
 
 const PhotographerDetailsHeader = (photographer) => {
+  /** GET DOM ELEMENTS */
+  const container = document.getElementById("photographer-header")
+
   const picture = PhotographerPicture(photographer.portrait)
 
-  container.innerHTML = `
-    <div class="photographer-header__info" role="region" aria-labelledby="photographer-name">
-        <h1 id="photographer-name" tabindex="0">${photographer.name}</h1>
-        <h2 aria-label="Localisation de ${photographer.name}" tabindex="0">
-          ${photographer.city}, ${photographer.country}
-        </h2>
-        <h3 aria-label="Devise de ${photographer.name}" tabindex="0">
-            ${photographer.tagline}
-        </h3>
-    </div>
-    <div class="photographer-header__button">
-        <button
-          id="contact_button"
-          class="contact_button"  
-          role="button"
-          aria-label="Contacter ${photographer.name}">
-          Contactez-moi
-        </button>
-    </div>
-    <div class="photographer-header__picture">
-        ${picture}
-    </div>
-`
-  const contactButton = document.getElementById("contact_button")
+  container.replaceChildren()
+  /** Header infos : name, contact button and photographer portrait */
+  const headerInfos = document.createElement("div")
+  headerInfos.classList.add("photographer-header__info")
+  headerInfos.setAttribute("role", "region")
+  headerInfos.setAttribute("aria-labelledby", "photographer-name")
+
+  /** h1 : photographer name */
+  const h1 = document.createElement("h1")
+  h1.id = "photographer-name"
+  h1.tabIndex = 0
+  h1.innerText = photographer.name
+
+  /** h2 : photographer location */
+  const h2 = document.createElement("h2")
+  h2.setAttribute("aria-label", `Localisation de ${photographer.name}`)
+  h2.tabIndex = 0
+  h2.innerText = `${photographer.city}, ${photographer.country}`
+
+  /** h3 : photographer tagline */
+  const h3 = document.createElement("h3")
+  h3.setAttribute("aria-label", `Devise de ${photographer.name}`)
+  h3.tabIndex = 0
+  h3.innerText = photographer.tagline
+
+  headerInfos.appendChild(h1)
+  headerInfos.appendChild(h2)
+  headerInfos.appendChild(h3)
+
+  /** Header button container */
+  const headerButton = document.createElement("div")
+  headerButton.classList.add("photographer-header__button")
+
+  /** Contact button */
+  const contactButton = document.createElement("button")
+  contactButton.id = "contact_button"
+  contactButton.classList.add("contact_button")
+  contactButton.setAttribute("role", "button")
+  contactButton.setAttribute("aria-label", `Contacter ${photographer.name}`)
+  contactButton.innerText = "Contactez-moi"
   contactButton.addEventListener("click", () =>
     openContactForm(photographer.name)
   )
+  headerButton.appendChild(contactButton)
+
+  /** Header picture */
+  const headerPicture = document.createElement("div")
+  headerPicture.classList.add("photographer-header__picture")
+  headerPicture.appendChild(picture)
+
+  container.appendChild(headerInfos)
+  container.appendChild(headerButton)
+  container.appendChild(headerPicture)
 }
 
 export default PhotographerDetailsHeader

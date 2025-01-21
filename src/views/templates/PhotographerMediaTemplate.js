@@ -16,18 +16,25 @@ const PhotographerMediaContent = (photographer, media) => {
   let mediaSource
 
   if (media.image) {
-    mediaSource = `<img 
-      src="${path}"
-      alt=""
-      role="img"
-      />`
+    mediaSource = document.createElement("img")
+    mediaSource.src = path
+    mediaSource.alt = ""
+    mediaSource.role = "img"
   } else if (media.video) {
-    mediaSource = `<video
-      controls
-      aria-label="Vidéo de ${photographer.name}">
-      <source src="${path}" type="video/mp4" />
-      Votre navigateur ne supporte pas ce type de vidéo.
-    </video>`
+    mediaSource = document.createElement("video")
+    mediaSource.controls = true
+    mediaSource.ariaLabel = `Vidéo de ${photographer.name}`
+    mediaSource.innerHTML = `<source src="${path}" type="video/mp4" />`
+
+    const source = document.createElement("source")
+    source.setAttribute("src", path)
+    source.setAttribute("type", "video/mp4")
+    const fallbackText = document.createTextNode(
+      "Votre navigateur ne supporte pas ce type de vidéo."
+    )
+
+    mediaSource.appendChild(source)
+    mediaSource.appendChild(fallbackText)
   } else {
     console.warn("Le média n'est pas valide: ", media)
   }
@@ -42,17 +49,40 @@ const PhotographerMediaContent = (photographer, media) => {
  * @returns {string} The HTML content for the caption
  */
 const PhotographerMediaCaption = (media) => {
-  return `
-    <div class="info">
-      <h2 id="media-title-${media.id}" tabindex="0">${media.title}</h2>
-      <div class="info__likes">
-        <span id="info__likes-count-#${media.id}" class="info__likes-count" tabindex="0">${media.likes}</span>
-        <button class="media-btn_like" data-key="${media.id}" aria-label="J'aime ${media.title}" tabindex="0">
-          <i class="fas fa-heart"></i>
-        </button>      
-      </div>
-    </div>
-    `
+  /** Caption for image title, likes counter and like button */
+  const caption = document.createElement("div")
+  caption.classList.add("info")
+
+  /** h2 : image title */
+  const h2 = document.createElement("h2")
+  h2.id = `media-title-${media.id}`
+  h2.tabIndex = 0
+  h2.innerText = media.title
+
+  /** div : likes counter */
+  const infoLikes = document.createElement("div")
+  infoLikes.classList.add("info__likes")
+
+  const likesCount = document.createElement("span")
+  likesCount.id = `info__likes-count-#${media.id}`
+  likesCount.classList.add("info__likes-count")
+  likesCount.tabIndex = 0
+  likesCount.innerText = media.likes
+
+  /** button : like button */
+  const likeButton = document.createElement("button")
+  likeButton.classList.add("media-btn_like")
+  likeButton.setAttribute("data-key", media.id)
+  likeButton.setAttribute("aria-label", `J'aime ${media.title}`)
+  likeButton.tabIndex = 0
+  likeButton.innerHTML = `<i class="fas fa-heart"></i>`
+
+  infoLikes.appendChild(likesCount)
+  infoLikes.appendChild(likeButton)
+  caption.appendChild(h2)
+  caption.appendChild(infoLikes)
+
+  return caption
 }
 
 export { PhotographerMediaContent, PhotographerMediaCaption }

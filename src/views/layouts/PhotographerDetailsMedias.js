@@ -19,14 +19,14 @@ const PhotographerDetailsMedias = (photographer, medias) => {
     mediaArticle.setAttribute("aria-labelledby", `media-title-${media.id}`)
 
     const containerMedia = document.createElement("div")
-    containerMedia.innerHTML = PhotographerMediaContent(photographer, media)
+    containerMedia.appendChild(PhotographerMediaContent(photographer, media))
     containerMedia.setAttribute("tabindex", "0")
     containerMedia.addEventListener("click", () => openLightbox(medias, media))
 
     mediaArticle.appendChild(containerMedia)
 
     const containerMediaCaption = document.createElement("div")
-    containerMediaCaption.innerHTML = PhotographerMediaCaption(media)
+    containerMediaCaption.appendChild(PhotographerMediaCaption(media))
     mediaArticle.appendChild(containerMediaCaption)
 
     container.appendChild(mediaArticle)

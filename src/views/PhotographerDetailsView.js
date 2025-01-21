@@ -29,6 +29,9 @@ export default class PhotographerDetailsView {
    */
   static renderError() {
     const header = document.getElementById("photographer-header")
-    header.innerHTML = `<p class="error404">Page du photographe introuvable.</p>`
+    const errorMessage = document.createElement("h2")
+    errorMessage.classList.add("error404")
+    errorMessage.textContent = "Page du photographe introuvable."
+    header.replaceChildren(errorMessage)
   }
 }

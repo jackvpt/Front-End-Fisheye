@@ -4,14 +4,18 @@
  * @returns {string} - String containing the HTML for the photographer picture
  */
 const PhotographerPicture = (imgSrc) => {
-  return `
-    <div class="container__photographer-picture">
-      <img 
-        src="/src/assets/images/portraits/${imgSrc}" 
-        alt="" 
-        role="img">
-    </div>
-  `
+  const picture = document.createElement("div")
+  picture.classList.add("container__photographer-picture")
+  
+  /** img : photographer portrait */
+  const img = document.createElement("img")
+  img.src = `/src/assets/images/portraits/${imgSrc}`
+  img.alt = ""
+  img.role = "img"
+
+  picture.appendChild(img)
+
+  return picture
 }
 
 export default PhotographerPicture
