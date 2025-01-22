@@ -21,9 +21,15 @@ const PhotographerDetailsMedias = (photographer, medias) => {
 
     /** div : container for media */
     const containerMedia = document.createElement("div")
+    containerMedia.id = `mediaContainer-${media.id}`
     containerMedia.setAttribute("tabindex", "0")
     containerMedia.appendChild(PhotographerMediaContent(photographer, media))
     containerMedia.addEventListener("click", () => openLightbox(medias, media))
+    containerMedia.addEventListener("keypress", (event) => {
+      if (event.key === "Enter") {
+        openLightbox(medias, media)
+      }
+    })
 
     mediaArticle.appendChild(containerMedia)
 

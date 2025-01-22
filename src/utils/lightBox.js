@@ -9,6 +9,7 @@ const next = document.getElementById("lightBox-next")
 const close = document.getElementById("lightBox-close")
 
 let mediaIndex
+let mediaId
 let allMedias
 
 /**
@@ -20,6 +21,7 @@ const openLightbox = (medias, selectedMedia) => {
   allMedias = medias
 
   mediaIndex = medias.findIndex((media) => media.id === selectedMedia.id)
+  mediaId = selectedMedia.id
   lightBoxMainWrapper.style.display = "flex"
   lightBoxModal.style.display = "flex"
 
@@ -65,6 +67,9 @@ const closeLightboxModal = () => {
 
   /** Remove event listener for keydown */
   document.removeEventListener("keydown", handleKeyboardNavigation)
+
+  /** Set focus to current media */
+  document.getElementById(`mediaContainer-${mediaId}`).focus()
 }
 
 /**
