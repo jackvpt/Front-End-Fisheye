@@ -137,8 +137,9 @@ const submitContactForm = (event) => {
     contactForm.style.display = "none"
     contactMessage.style.display = "flex"
 
-    // closeContactModal()
     document.forms["contact_form"].reset() // Reset all fields
+
+    document.getElementById("btn-contact-message-close").focus()
   }
 }
 
@@ -170,12 +171,17 @@ const handleModalKeyEvents = (event) => {
   if (event.key === "Escape") {
     closeContactModal()
   }
-  if (event.key === "Enter" && event.target.tagName !== "TEXTAREA") {
+
+  /** Submit modal on Enter press */
+  if (event.key === "Enter") {
     event.preventDefault()
-    /** Submit modal on Enter press */
-    if (document.activeElement.closest("form") === contactForm) {
-      submitContactForm(event)
-    }
+    if (event.target.tagName !== "TEXTAREA") submitContactForm(event)
+
+    if (
+      event.target.id === "btn-contact-message-close" ||
+      event.target.id === "btn-contact-close"
+    )
+      closeContactModal()
   }
 }
 
