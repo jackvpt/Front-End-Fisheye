@@ -3,18 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/src/styles/main.css" rel="stylesheet" type="text/css" />
-    <link
-      href="/src/styles/photographer.css"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <link href="../styles/main.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/photographer.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/png" href="/src/assets/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
+      type="text/css"
     />
     <script
       src="https://kit.fontawesome.com/5397a1a858.js"
@@ -58,7 +55,7 @@
         <div class="photographer-sortbar__sortmenu">
           <button id="sortbar-btn" class="sortbar-btn">
             <span id="sortbar-selectedOption"></span>
-            <i id="sortbar-chevron" class="fas fa-chevron-down"></i>
+            <span id="sortbar-chevron" class="fas fa-chevron-down" aria-hidden="true"></span>
           </button>
           <ul id="sortbar-options-list" class="sortbar-options-list"></ul>
         </div>
@@ -81,7 +78,7 @@
               id="photographer-infos__likes"
               class="photographer-infos__likes"
             ></p>
-            <i class="fas fa-heart"></i>
+            <span class="fas fa-heart" aria-hidden="true"></span>
           </div>
           <div
             id="photographer-infos__price"
@@ -115,12 +112,7 @@
               <img src="/src/assets/icons/close.svg" alt="Fermer" />
             </button>
           </div>
-          <form
-            id="contact-form"
-            name="contact_form"
-            novalidate
-            aria-labelledby="form-title"
-          >
+          <form id="contact-form" name="contact_form" novalidate>
             <!-- First name -->
             <div class="formData">
               <label for="firstName"
