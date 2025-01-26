@@ -186,6 +186,16 @@
     height: 350px;
 }
 
+.container-media {
+    width: 350px;
+    height: 300px;
+}
+
+.container-media:hover {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+
 .mediaCard img {
     width: 350px;
     height: 300px;
@@ -231,6 +241,12 @@
     font-size: 22px;
     color: #901C1C;
     cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.mediaCard .info .fa-heart:hover {
+    transform: scale(1.2);
+    color: #DB8876;
 }
 
 .media-btn_like {
@@ -240,6 +256,8 @@
     padding: 0;
     margin-left: 10px;
 }
+
+
 
 /* =========================================== */
 /* INFOS (Nb likes & price) */

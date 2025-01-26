@@ -47,7 +47,7 @@ header {
 
 /* Hover effect */
 .container__photographer-picture:hover {
-    box-shadow: 0px 6px 20px 0px #DB8876;;
+    box-shadow: 0px 6px 20px 0px #505050;
 }
 
 .container__photographer-picture:hover img {
