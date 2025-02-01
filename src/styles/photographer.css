@@ -342,12 +342,21 @@ h3 {
     font-weight: normal;
 }
 
-
 .contact-modal .btn-close {
     cursor: pointer;
     background-color: transparent;
     border: none;
 }
+
+.contact-modal .btn-close i {
+    font-size: 64px;
+    color: white;
+}
+
+.contact-modal .btn-close i:hover {
+    color: #901C1C;
+}
+
 
 form {
     display: flex;

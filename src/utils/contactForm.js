@@ -156,9 +156,6 @@ const setEventListeners = () => {
   document.getElementById("message").addEventListener("blur", checkMessage)
   contactForm.addEventListener("submit", submitContactForm)
   document
-    .getElementById("btn-contact-close")
-    .addEventListener("click", closeContactModal)
-  document
     .getElementById("btn-contact-message-close")
     .addEventListener("click", closeContactModal)
 }
